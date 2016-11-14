@@ -32,7 +32,8 @@ gem 'sdoc', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'simple_form'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.alpha5'
+# gem 'bootstrap-sass'
 
 gem 'devise'
 gem 'font-awesome-rails'
@@ -40,9 +41,13 @@ gem 'font-awesome-rails'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'awesome_print', require: 'ap'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do

@@ -20,5 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  eventy: 'Eventy'
+  eventy: Eventy
+  register: Register
+  login: Login
   hello: "Hello world"

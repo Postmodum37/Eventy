@@ -1,0 +1,8 @@
+- flash.each do |type, message|
+  %div{:class => "alert #{bootstrap_class_for(type)} fade in", :role => "alert"}
+    %button.close{"data-dismiss" => "alert"} ×
+    %span{"aria-hidden" => "true", :class => "glyphicon #{bootstrap_glyphs_icon(type)}"}
+    %span.sr-only
+      = type.capitalize
+      \:
+    = message

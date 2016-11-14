@@ -1,18 +1,33 @@
-%nav#mainNav.navbar.navbar-default.navbar-fixed-top
-  .container-fluid
-    .navbar-header
-      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        Menu
-        %i.fa.fa-bars
-      %a.navbar-brand.page-scroll{:href => root_path}= t('eventy')
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a.page-scroll{:href => "#about"} About
-        %li
-          %a.page-scroll{:href => "#services"} Services
-        %li
-          %a.page-scroll{:href => "#portfolio"} Portfolio
-        %li
-          %a.page-scroll{:href => "#contact"} Contact
+%nav.navbar.navbar-light.bg-faded
+  %a.navbar-brand{:href => root_path}= t('eventy')
+  %ul.nav.navbar-nav
+    - if user_signed_in?
+      %li.nav-item
+        %a.nav-link{:href => destroy_user_session_path, data: { method: :delete}, rel: 'nofollow'}= t('logout')
+      -# = link_to(t('logout'), destroy_user_session_path, :method => :delete)
+    - else
+      %li.nav-item
+        %a.nav-link{:href => '#', data: { toggle: "modal", target: "#loginModal"} }= t('login')
+      %li.nav-item
+        %a.nav-link{:href => new_user_registration_path }= t('register')
+  %form.form-inline.float-xs-right
+    %input.form-control{:placeholder => "Search", :type => "text"}/
+    %button.btn.btn-outline-success{:type => "submit"} Search
+
+
+-# %nav#mainNav.navbar.navbar-default.navbar-fixed-top
+-#   .container-fluid
+-#     .navbar-header
+-#       %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+-#         %span.sr-only Toggle navigation
+-#         Menu
+-#         %i.fa.fa-bars
+-#       %a.navbar-brand.page-scroll{:href => root_path}= t('eventy')
+-#     #bs-example-navbar-collapse-1.collapse.navbar-collapse
+-#       %ul.nav.navbar-nav.navbar-right
+-#         - if user_signed_in?
+-#         - else
+-#           %li
+-#             %a{:href => '#', data: { toggle: "modal", target: "#loginModal"} }= t('login')
+-#           %li
+-#             %a{:href => new_user_registration_path }= t('register')
