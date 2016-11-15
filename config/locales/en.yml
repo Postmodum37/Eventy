@@ -24,3 +24,13 @@ en:
   register: Register
   login: Login
   hello: "Hello world"
+  remember_me: Remember me
+  login_meesage: Login to your Account
+  sign_in: Login
+  sign_up: Register
+  register_meesage: Register an Account
+  email: Email
+  password: Password
+  password_confirmation: Password Confirmation
+  first_name: First Name
+  last_name: Last Name

@@ -1,2 +1,13 @@
 @import "bootstrap";
 @import "font-awesome";
+// @import "tether";
+// @import "tether-theme-basic";
+body {
+  background-color: #f3f3f3;
+}
+
+ul.nav.nav-tabs {
+  li.nav-item {
+    width: 49%;
+  }
+}

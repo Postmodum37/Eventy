@@ -8,6 +8,12 @@
     = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = render partial: '/layouts/navbar'
-    = render partial: 'shared/flash' unless flash.empty?
-    = yield
+    .wrapper#wrapper
+      .container
+        = render partial: '/layouts/navbar'
+        = render partial: 'shared/flash' unless flash.empty?
+        = yield
+
+    -# - unless user_signed_in?
+    -#   = render partial: 'shared/login_modal'
+    -#   = render partial: 'shared/register_modal'

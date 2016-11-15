@@ -37,6 +37,10 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 
 gem 'devise'
 gem 'font-awesome-rails'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+# gem 'tether-rails'
 
 gem 'haml'
 gem 'haml-rails'
