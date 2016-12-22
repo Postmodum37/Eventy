@@ -20,17 +20,39 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  edit_event: Edit Event
+  start_date: Start Date
+  end_date: End Date
+  address: Address
+  city: City
+  contact_phone: Phone
+  contact_email: Email
+  description: Description
+  email: Email
   eventy: Eventy
-  register: Register
-  login: Login
+  first_name: First Name
   hello: "Hello world"
-  remember_me: Remember me
+  last_name: Last Name
   login_meesage: Login to your Account
+  login: Login
+  new_event: Create an Event
+  password_confirmation: Password Confirmation
+  password: Password
+  phone: Phone
+  postal_code: Postal Code
+  register_meesage: Register an Account
+  register: Register
+  remember_me: Remember me
+  create_event: Create
+  update_event: Update
   sign_in: Login
   sign_up: Register
-  register_meesage: Register an Account
-  email: Email
-  password: Password
-  password_confirmation: Password Confirmation
-  first_name: First Name
-  last_name: Last Name
+  site_title: Eventy
+  street_number: Street Number
+  street: Street
+  title: Title
+
+  flash:
+    event:
+      created: Event successfully created.
+      creation_error: Something went wrong. Try again.

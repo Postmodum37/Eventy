@@ -3,17 +3,22 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Eventy
+    %title= t('site_title')
+
+    -# = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_key}"
+    %script{:src => "http://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_key}&libraries=places", :type => "text/javascript"}
+
+    %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+    %script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}
     = stylesheet_link_tag    'application', params[:controller], media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true
+
     = csrf_meta_tags
+
+
   %body
     .wrapper#wrapper
       .container
         = render partial: '/layouts/navbar'
         = render partial: 'shared/flash' unless flash.empty?
         = yield
-
-    -# - unless user_signed_in?
-    -#   = render partial: 'shared/login_modal'
-    -#   = render partial: 'shared/register_modal'
+  = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true

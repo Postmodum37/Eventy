@@ -38,6 +38,15 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+    config.static_cache_control = "public, max-age=172800"
+    config.cache_store = :mem_cache_store
+  else
+    config.action_controller.perform_caching = false
+    config.cache_store = :null_store
+  end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

@@ -1,0 +1,49 @@
+= form_for(event, url: events_path, html: { role: "form" }) do |f|
+  = devise_bootstrap_error_messages!
+  .coordinates
+    = f.hidden_field :lat, data: { geo: 'lat' }
+    = f.hidden_field :lng, data: { geo: 'lng' }
+  .form-group
+    = f.label :title, class: 'sr-only'
+    = f.text_field :title, autofocus: true, class: "form-control", placeholder: t('title'), required: true
+  .form-group
+    = f.label :address, class: 'sr-only'
+    = f.text_field :address, class: "form-control", placeholder: t('address'), required: true, data: { geo: 'formatted_address' }
+  .row
+    .col-md-8
+      .form-group
+        = f.label :city, class: 'sr-only'
+        = f.text_field :city, class: "form-control", placeholder: t('city'), required: true, data: { geo: 'locality' }
+    .col-md-4
+      .form-group
+        = f.label :postal_code, class: 'sr-only'
+        = f.text_field :postal_code, class: "form-control", placeholder: t('postal_code'), required: true, data: { geo: 'postal_code' }
+  .row
+    .col-md-8
+      .form-group
+        = f.label :street, class: 'sr-only'
+        = f.text_field :street, class: "form-control", placeholder: t('street'), required: true, data: { geo: 'route' }
+    .col-md-4
+      .form-group
+        = f.label :street_number, class: 'sr-only'
+        = f.text_field :street_number, class: "form-control", placeholder: t('street_number'), required: true, data: { geo: 'street_number' }
+  .form-group
+    = f.label :description, class: 'sr-only'
+    = f.text_area :description, class: "form-control", placeholder: t('description'), required: true
+  .form-group
+    = f.label :contact_phone, class: 'sr-only'
+    = f.phone_field :contact_phone, class: "form-control", placeholder: t('contact_phone')
+  .form-group
+    = f.label :contact_email, class: 'sr-only'
+    = f.email_field :contact_email, class: "form-control", placeholder: t('contact_email')
+  .row
+    .col-md-6
+      .form-group
+        = f.label :street, class: 'sr-only'
+        = f.datetime_local_field :start_date, class: "form-control", placeholder: t('start_date'), required: true
+    .col-md-6
+      .form-group
+        = f.label :end_date, class: 'sr-only'
+        = f.datetime_local_field :end_date, class: "form-control", placeholder: t('end_date'), required: true
+
+  = f.submit "#{action.eql?('new') ? t('create_event') : t('update_event')}", class: "btn btn-primary btn-block"
