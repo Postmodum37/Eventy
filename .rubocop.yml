@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - '**/*.haml'
+Rails:
+  Enabled: true
+LineLength:
+  Max: 200

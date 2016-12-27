@@ -20,21 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  recent_events: Recent Events
-  last_events: Last Events
-  todays_events: Todays Events
-  edit_event: Edit Event
-  start_date: Start Date
-  end_date: End Date
   address: Address
   city: City
-  contact_phone: Phone
   contact_email: Email
+  contact_phone: Phone
+  create_event: Create
   description: Description
+  edit_event: Edit Event
   email: Email
+  end_date: End Date
   eventy: Eventy
   first_name: First Name
   hello: "Hello world"
+  last_events: Last Events
   last_name: Last Name
   login_meesage: Login to your Account
   login: Login
@@ -43,17 +41,29 @@ en:
   password: Password
   phone: Phone
   postal_code: Postal Code
+  recent_events: Recent Events
   register_meesage: Register an Account
   register: Register
   remember_me: Remember me
-  create_event: Create
-  update_event: Update
   sign_in: Login
   sign_up: Register
   site_title: Eventy
+  start_date: Start Date
   street_number: Street Number
   street: Street
   title: Title
+  todays_events: Todays Events
+  update_event: Update
+
+  helpers:
+      label:
+        event:
+          contact_email: Email
+          contact_phone: Phone
+          end_date: End Date
+          start_date: Start Date
+          postal_code: Postal Code
+          street_number: Street Number
 
   flash:
     event:
