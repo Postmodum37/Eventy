@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  recent_events: Recent Events
+  last_events: Last Events
+  todays_events: Todays Events
   edit_event: Edit Event
   start_date: Start Date
   end_date: End Date

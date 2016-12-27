@@ -1,7 +1,8 @@
-.row
-  .card.card-block.register-card
-    .col-xs-12.col-md-6.map-height
-      #map
-    .col-xs-12.col-md-6
-      %h4.text-xs-center.event-action-title.edit-event= t('edit_event')
-      = render partial: 'form', locals: { event: @event, action: 'edit' }
+.container
+  .row
+    .card.card-block.register-card
+      .col-xs-12.col-md-6.map-height
+        #map
+      .col-xs-12.col-md-6
+        %h4.text-xs-center.event-action-title.edit-event= t('edit_event')
+        = render partial: 'form', locals: { event: @event, action: 'edit' }

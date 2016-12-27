@@ -16,9 +16,7 @@
 
 
   %body
-    .wrapper#wrapper
-      .container
-        = render partial: '/layouts/navbar'
-        = render partial: 'shared/flash' unless flash.empty?
-        = yield
+    = render partial: '/layouts/navbar'
+    = render partial: 'shared/flash' unless flash.empty?
+    = yield
   = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true

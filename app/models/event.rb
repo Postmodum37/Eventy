@@ -6,4 +6,9 @@ class Event < ApplicationRecord
   # def to_param
   #   title
   # end
+
+  def short_description
+    return description[0..150] + '...' if description.length > 150
+    description
+  end
 end
