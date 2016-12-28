@@ -64,6 +64,10 @@ en:
           start_date: Start Date
           postal_code: Postal Code
           street_number: Street Number
+          title: Title
+          street: Street
+          city: City
+          address: Address
 
   flash:
     event:

@@ -29,7 +29,7 @@ $(document).ready(function() {
   //     handler.fitMapToBounds();
   //   }
   // );
-  if ($('.event-action-title').text() === 'Edit Event') {
+  if (($('.event-action-title').text() === 'Edit Event') || ($('.event-action-title').text() === 'Keisti Renginį')) {
     $("#event_address")
     .geocomplete({
       country: 'LT',
@@ -64,7 +64,7 @@ $(document).ready(function() {
       // $("#event_address").trigger("geocode");
       // $("#event_address").geocomplete("find", latLng.lat() + ', ' + latLng.lng());
     });
-  } else if ($('.event-action-title').text() === 'Create an Event') {
+  } else if (($('.event-action-title').text() === 'Create an Event') || ($('.event-action-title').text() === 'Sukurti Renginį')) {
     $("#event_address")
     .geocomplete({
       country: 'LT',

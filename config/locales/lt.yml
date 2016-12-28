@@ -1,0 +1,67 @@
+lt:
+  address: Adresas
+  city: Miestas
+  contact_email: E. Paštas
+  contact_phone: Telefonas
+  create_event: Sukurti Renginį
+  description: Aprašymas
+  edit_event: Keisti Renginį
+  email: E. Paštas
+  end_date: Pabaigos Data
+  eventy: Eventy
+  first_name: Vardas
+  last_events: Paskutiniai Renginiai
+  last_name: Pavardė
+  login_meesage: Prisijunkite prie savo Paskyros
+  login: Prisijungimas
+  logout: Atsijungti
+  new_event: Sukurti Renginį
+  password_confirmation: Slaptažodžio patvirtinimas
+  password: Slaptažodis
+  phone: Telefonas
+  postal_code: Pašto Kodas
+  recent_events: Naujausi Renginiai
+  register_meesage: Register an Account
+  register: Registracija
+  remember_me: Atsiminti mane
+  sign_in: Prisijungti
+  sign_up: Registruotis
+  site_title: Eventy
+  start_date: Pradžios Data
+  street_number: Gatvės Nr.
+  street: Gatvė
+  title: Pavadinimas
+  todays_events: Šiandienos Renginiai
+  update_event: Atnaujinti
+
+  theatricals: Spektakliai
+  concerts: Koncertai
+  seminars: Seminarai
+  exhibition: Parodos
+  premieres: Premjeros
+  sport: Sportas
+  training: Mokymai
+  parties: Vakarėliai
+  initiatives: Iniciatyvos
+  children: Vaikams
+  festivals: Festivaliai
+  other: Kita
+
+  helpers:
+      label:
+        event:
+          contact_email: E. Paštas
+          contact_phone: Telefonas
+          end_date: Pabaigos Data
+          start_date: Pradžios Data
+          postal_code: Pašto Kodas
+          street_number: Gatvės Nr.
+          title: Pavadinimas
+          street: Gatvė
+          city: Miestas
+          address: Adresas
+
+  flash:
+    event:
+      created: Renginys sėkmingai sukurtas.
+      creation_error: Įvyko klaida. Bandykite vėl.
