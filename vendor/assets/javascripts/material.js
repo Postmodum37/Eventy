@@ -351,4 +351,4 @@
 
 })(jQuery);
 
-$.material.init();
+// $.material.init();

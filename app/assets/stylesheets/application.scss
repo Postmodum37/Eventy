@@ -4,6 +4,7 @@
 @import "ripples";
 @import "font-awesome";
 @import "jquery-ui";
+@import "simple-sidebar";
 
 body {
   background-color: #f3f3f3;
@@ -17,4 +18,9 @@ ul.nav.nav-tabs {
 
 nav.navbar.navbar-default {
   margin-bottom: 0px;
+}
+
+#site-title {
+  margin-left: 0px;
+  font-size: 34px;
 }

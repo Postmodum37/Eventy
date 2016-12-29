@@ -1,52 +1,50 @@
-= form_for(event, url: events_path, html: { role: "form" }) do |f|
-  = devise_bootstrap_error_messages!
-  .coordinates
-    = f.hidden_field :lat, data: { geo: 'lat' }
-    = f.hidden_field :lng, data: { geo: 'lng' }
-  .form-group.label-floating
-    = f.label :title, class: 'control-label'
-    = f.text_field :title, autofocus: true, class: "form-control", required: true
-  .form-group.label-floating
-    = f.label :address, class: 'control-label'
-    = f.text_field :address, class: "form-control", placeholder: '', required: true, data: { geo: 'formatted_address' }
-  .row
-    .col-md-6
-      .form-group.label-floating
-        = f.label :city, class: 'control-label'
-        = f.text_field :city, class: "form-control", required: true, data: { geo: 'locality' }
-    .col-md-6
-      .form-group.label-floating
-        = f.label :postal_code, class: 'control-label'
-        = f.text_field :postal_code, class: "form-control", required: true, data: { geo: 'postal_code' }
-  .row
-    .col-md-6
-      .form-group.label-floating
-        = f.label :street, class: 'control-label'
-        = f.text_field :street, class: "form-control", required: true, data: { geo: 'route' }
-    .col-md-6
-      .form-group.label-floating
-        = f.label :street_number, class: 'control-label'
-        = f.text_field :street_number, class: "form-control", required: true, data: { geo: 'street_number' }
-  .row
-    .col-md-6
-      .form-group.label-floating
-        = f.label :contact_phone, class: 'control-label'
-        = f.phone_field :contact_phone, class: "form-control"
-    .col-md-6
-      .form-group.label-floating
-        = f.label :contact_email, class: 'control-label'
-        = f.email_field :contact_email, class: "form-control"
-  .row
-    .col-md-6
-      .form-group.label-static
-        = f.label :start_date, class: 'control-label'
-        = f.datetime_local_field :start_date, class: "form-control", required: true
-    .col-md-6
-      .form-group.label-static
-        = f.label :end_date, class: 'control-label'
-        = f.datetime_local_field :end_date, class: "form-control", required: true
-  .form-group.label-floating
-    = f.label :description, class: 'control-label'
-    = f.text_area :description, class: "form-control", required: true
+.coordinates
+  = f.hidden_field :lat, data: { geo: 'lat' }
+  = f.hidden_field :lng, data: { geo: 'lng' }
+.form-group.label-floating
+  = f.label :title, class: 'control-label'
+  = f.text_field :title, autofocus: true, class: "form-control", required: true
+.form-group.label-floating
+  = f.label :address, class: 'control-label'
+  = f.text_field :address, class: "form-control", placeholder: '', required: true, data: { geo: 'formatted_address' }
+.row
+  .col-md-6
+    .form-group.label-floating
+      = f.label :city, class: 'control-label'
+      = f.text_field :city, class: "form-control", required: true, data: { geo: 'locality' }
+  .col-md-6
+    .form-group.label-floating
+      = f.label :postal_code, class: 'control-label'
+      = f.text_field :postal_code, class: "form-control", required: true, data: { geo: 'postal_code' }
+.row
+  .col-md-6
+    .form-group.label-floating
+      = f.label :street, class: 'control-label'
+      = f.text_field :street, class: "form-control", required: true, data: { geo: 'route' }
+  .col-md-6
+    .form-group.label-floating
+      = f.label :street_number, class: 'control-label'
+      = f.text_field :street_number, class: "form-control", required: true, data: { geo: 'street_number' }
+.row
+  .col-md-6
+    .form-group.label-floating
+      = f.label :contact_phone, class: 'control-label'
+      = f.phone_field :contact_phone, class: "form-control"
+  .col-md-6
+    .form-group.label-floating
+      = f.label :contact_email, class: 'control-label'
+      = f.email_field :contact_email, class: "form-control"
+.row
+  .col-md-6
+    .form-group.label-static
+      = f.label :start_date, class: 'control-label'
+      = f.datetime_local_field :start_date, class: "form-control", required: true
+  .col-md-6
+    .form-group.label-static
+      = f.label :end_date, class: 'control-label'
+      = f.datetime_local_field :end_date, class: "form-control", required: true
+.form-group.label-floating
+  = f.label :description, class: 'control-label'
+  = f.text_area :description, class: "form-control", required: true
 
-  = f.submit "#{action.eql?('new') ? t('create_event') : t('update_event')}", class: "btn btn-primary btn-raised"
+= f.submit "#{action.eql?('new') ? t('create_event') : t('update_event')}", class: "btn btn-primary btn-raised"

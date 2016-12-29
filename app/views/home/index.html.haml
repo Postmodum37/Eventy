@@ -1,20 +1,20 @@
-.col-md-2
-.col-md-10
-  %h3= t('recent_events')
-  %hr
-  .row.recent-events
-    - @recent_events.each do |event|
-      .col-md-3
-        = render partial: '/events/event_card', locals: { event: event }
-  %h3= t('todays_events')
-  %hr
-  .row.todays-events
-    - @todays_events.each do |event|
-      .col-md-3
-        = render partial: '/events/event_card', locals: { event: event }
-  %h3= t('last_events')
-  %hr
-  .row.last-events
-    - @last_events.each do |event|
-      .col-md-3
-        = render partial: '/events/event_card', locals: { event: event }
+.row
+  .col-md-12
+    %h3= t('recent_events')
+    %hr
+    .row.recent-events
+      - @recent_events.each do |event|
+        .col-md-3
+          = render partial: '/events/event_card', locals: { event: event }
+    %h3= t('todays_events')
+    %hr
+    .row.todays-events
+      - @todays_events.each do |event|
+        .col-md-3
+          = render partial: '/events/event_card', locals: { event: event }
+    %h3= t('last_events')
+    %hr
+    .row.last-events
+      - @last_events.each do |event|
+        .col-md-3
+          = render partial: '/events/event_card', locals: { event: event }

@@ -10,6 +10,7 @@
 
     %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
     %script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}
+
     = stylesheet_link_tag    'application', params[:controller], media: 'all', 'data-turbolinks-track' => true
 
     = csrf_meta_tags
@@ -17,6 +18,29 @@
 
   %body
     = render partial: '/layouts/navbar'
-    = render partial: 'shared/flash' unless flash.empty?
-    = yield
+    #wrapper
+      #sidebar-wrapper
+        %ul.sidebar-nav
+          %li.sidebar-brand
+            %a{:href => "#"}
+              Start Bootstrap
+          %li
+            %a{:href => "#"} Dashboard
+          %li
+            %a{:href => "#"} Shortcuts
+          %li
+            %a{:href => "#"} Overview
+          %li
+            %a{:href => "#"} Events
+          %li
+            %a{:href => "#"} About
+          %li
+            %a{:href => "#"} Services
+          %li
+            %a{:href => "#"} Contact
+      #page-content-wrapper
+        .container-fluid
+          = render partial: 'shared/flash' unless flash.empty?
+          = yield
+
   = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true
