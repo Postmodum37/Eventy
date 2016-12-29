@@ -5,7 +5,7 @@ lt:
   contact_phone: Telefonas
   create_event: Sukurti Renginį
   description: Aprašymas
-  edit_event: Keisti Renginį
+  edit_event: Redaguoti Renginį
   email: E. Paštas
   end_date: Pabaigos Data
   eventy: Eventy
@@ -33,6 +33,8 @@ lt:
   title: Pavadinimas
   todays_events: Šiandienos Renginiai
   update_event: Atnaujinti
+  min_participants: Min. Dalyvių
+  max_participants: Max. Dalyvių
 
   theatricals: Spektakliai
   concerts: Koncertai
@@ -47,10 +49,14 @@ lt:
   festivals: Festivaliai
   other: Kita
 
+  minimum_password: "(Mažiausiai %{length} simboliai)"
+
   helpers:
       label:
         event:
           contact_email: E. Paštas
+          email: E. Paštas
+          password: Slaptažodis
           contact_phone: Telefonas
           end_date: Pabaigos Data
           start_date: Pradžios Data
@@ -60,6 +66,16 @@ lt:
           street: Gatvė
           city: Miestas
           address: Adresas
+          description: Aprašymas
+          min_participants: Min. Dalyvių
+          max_participants: Max. Dalyvių
+        user:
+          email: E. Paštas
+          first_name: Vardas
+          last_name: Pavardė
+          password_confirmation: Slaptažodžio patvirtinimas
+          password: Slaptažodis
+
 
   flash:
     event:

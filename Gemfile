@@ -36,8 +36,8 @@ gem 'sdoc', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'simple_form'
-gem 'bootstrap', '~> 4.0.0.alpha5'
-# gem 'bootstrap-sass'
+# gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap-sass'
 
 gem 'devise'
 gem 'font-awesome-rails'

@@ -13,9 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require tether
 //= require bootstrap-sprockets
+//= require material
+//= require ripples
 //= require turbolinks
 //= require underscore
 //= require jquery.geocomplete
 //= require gmaps/google
+
+$(document).ready(function() {
+  // $.material.init();
+});

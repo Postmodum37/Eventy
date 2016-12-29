@@ -1,4 +1,7 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-material-design";
+@import "ripples";
 @import "font-awesome";
 @import "jquery-ui";
 
@@ -10,4 +13,8 @@ ul.nav.nav-tabs {
   li.nav-item {
     width: 49%;
   }
+}
+
+nav.navbar.navbar-default {
+  margin-bottom: 0px;
 }

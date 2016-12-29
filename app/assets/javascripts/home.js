@@ -2,7 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 function initMap(id) {
-  console.log($('#' + id).parent().find('.map-marker-coordinates').find('#lat'));
   var handler = Gmaps.build('Google');
   var lat = $('#' + id).parent().find('.map-marker-coordinates').find('#lat').val();
   var lng = $('#' + id).parent().find('.map-marker-coordinates').find('#lng').val();
@@ -45,7 +44,6 @@ function initMap(id) {
 function setMaps() {
   $('.mini-event-map').each(function(index, el) {
     var id = $(el).attr('id');
-    console.log(id);
     initMap(id);
   });
 }

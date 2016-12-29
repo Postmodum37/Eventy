@@ -1,60 +1,29 @@
-.row
-  .col-xs-12.col-md-6.push-md-3
-    .card.card-block.register-card
-      %h4.text-xs-center.register_message= t('register_meesage')
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: "form" }) do |f|
-        = devise_bootstrap_error_messages!
-        .form-group
-          = f.label :first_name, class: 'sr-only'
-          = f.text_field :first_name, autofocus: true, class: "form-control", placeholder: t('first_name'), required: true
-        .form-group
-          = f.label :last_name, class: 'sr-only'
-          = f.text_field :last_name, class: "form-control", placeholder: t('last_name'), required: true
-        .form-group
-          = f.label :email, class: 'sr-only'
-          = f.email_field :email, class: "form-control", placeholder: t('email'), required: true
-        .form-group
-          = f.label :password, class: 'sr-only'
-          = f.password_field :password, class: "form-control", placeholder: t('password'), required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-          - if @minimum_password_length
-            %small.form-text.text-muted
-              (#{@minimum_password_length} characters minimum)
-        .form-group
-          = f.label :password_confirmation, class: 'sr-only'
-          = f.password_field :password_confirmation , class: "form-control", placeholder: t('password_confirmation'), required: true
-        = f.submit t('sign_up'), class: "btn btn-primary btn-block"
-
-
--# .row
--#   .col-xs-12.col-md-4.push-md-4
--#     .panel.panel-default.panel-boundary
--#       .panel-heading
--#         %h2= t('sign_up', :default => 'Sign up')
--#       .panel-body
--#         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: "form" }) do |f|
--#           = devise_bootstrap_error_messages!
--#           .form-group
--#             = f.label :email
--#             = f.email_field :email, autofocus: true, class: "form-control"
--#           .form-group
--#             = f.label :password
--#             = f.password_field :password, autocomplete: "off", class: "form-control"
--#             - if @minimum_password_length
--#               %small.form-text.text-muted
--#                 (#{@minimum_password_length} characters minimum)
--#           .form-group
--#             = f.label :password_confirmation
--#             = f.password_field :password_confirmation, autocomplete: "off" , class: "form-control"
--#           = f.submit  t('.sign_up', :default => "Sign up"), class: "btn btn-primary"
--#       = render "devise/shared/links"
-
--# %h2 Sign up
--# = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
--#   = f.error_notification
--#   .form-inputs
--#     = f.input :email, required: true, autofocus: true
--#     = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
--#     = f.input :password_confirmation, required: true
--#   .form-actions
--#     = f.button :submit, "Sign up"
--# = render "devise/shared/links"
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .card
+        .card-height-indicator
+        .card-content
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: "form" }) do |f|
+            = devise_bootstrap_error_messages!
+            .card-body
+              .form-group.label-floating
+                = f.label :first_name, class: 'control-label'
+                = f.text_field :first_name, autofocus: true, class: "form-control", required: true
+              .form-group.label-floating
+                = f.label :last_name, class: 'control-label'
+                = f.text_field :last_name, class: "form-control", required: true
+              .form-group.label-floating
+                = f.label :email, class: 'control-label'
+                = f.email_field :email, class: "form-control", required: true
+              .form-group.label-floating
+                = f.label :password, class: 'control-label'
+                = f.password_field :password, class: "form-control", required: true, hint: ("#{t('minimum_password', length: @minimum_password_length)}" if @minimum_password_length)
+                - if @minimum_password_length
+                  %small.form-text.text-muted
+                    = t('minimum_password', length: @minimum_password_length)
+              .form-group.label-floating
+                = f.label :password_confirmation, class: 'control-label'
+                = f.password_field :password_confirmation , class: "form-control", required: true
+            %footer.card-footer
+              = f.submit t('sign_up'), class: "btn btn-primary btn-raised"

@@ -1,35 +1,20 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+var editEventTitleLT = 'Redaguoti Renginį';
+var editEventTitleEN = 'Edit Event';
+var newEventTitleLT = 'Sukurti Renginį';
+var newEventTitleEN = 'Create an Event';
+
+function triggerChange() {
+  $('#event_city').trigger("change");
+  $('#event_street').trigger("change");
+  $('#event_street_number').trigger("change");
+  $('#event_postal_code').trigger("change");
+}
+
 $(document).ready(function() {
-  // handler = Gmaps.build('Google');
-  // handler.buildMap({
-  //     provider: {
-  //       disableDefaultUI: true,
-  //       center: new google.maps.LatLng(54.8985, 23.9036),
-  //       zoom: 9,
-  //       zoomControl: true,
-  //       zoomControlOptions: {
-  //         style: google.maps.ZoomControlStyle.DEFAULT,
-  //         position: google.maps.ControlPosition.RIGHT_CENTER
-  //       },
-  //       panControl: false,
-  //       mapTypeControl: false,
-  //       scaleControl: false,
-  //       streetViewControl: false,
-  //       overviewMapControl: false,
-  //       rotateControl: false
-  //     },
-  //     internal: {
-  //       id: 'map'
-  //     }
-  //   },
-  //   function(){
-  //     // handler.bounds.extendWith(markers);
-  //     handler.fitMapToBounds();
-  //   }
-  // );
-  if (($('.event-action-title').text() === 'Edit Event') || ($('.event-action-title').text() === 'Keisti Renginį')) {
+  if (($('.event-action-title').text() === editEventTitleEN) || ($('.event-action-title').text() === editEventTitleLT)) {
     $("#event_address")
     .geocomplete({
       country: 'LT',
@@ -59,12 +44,10 @@ $(document).ready(function() {
         draggable: false
       }
     })
-    .bind("geocode:dragged", function(event, latLng){
-      // console.log(latLng);
-      // $("#event_address").trigger("geocode");
-      // $("#event_address").geocomplete("find", latLng.lat() + ', ' + latLng.lng());
+    .bind("geocode:result", function(event, result){
+      triggerChange();
     });
-  } else if (($('.event-action-title').text() === 'Create an Event') || ($('.event-action-title').text() === 'Sukurti Renginį')) {
+  } else if (($('.event-action-title').text() === newEventTitleEN) || ($('.event-action-title').text() === newEventTitleLT)) {
     $("#event_address")
     .geocomplete({
       country: 'LT',
@@ -95,10 +78,12 @@ $(document).ready(function() {
         draggable: false
       }
     })
-    .bind("geocode:dragged", function(event, latLng){
-      // console.log(latLng);
-      // $("#event_address").trigger("geocode");
-      // $("#event_address").geocomplete("find", latLng.lat() + ', ' + latLng.lng());
+    .bind("geocode:result", function(event, result){
+      triggerChange();
     });
+
+  } else {
+    console.log('Check Titles.');
   }
+  // $("#event_address").removeAttr('placeholder');
 });
