@@ -67,13 +67,13 @@
       .checkbox
         = f.label :paid do
           = f.check_box :paid
-          %span.checkbox-material
-            %span.check
+          -# %span.checkbox-material
+          -#   %span.check
           = t('paid')
   .col-md-3
     .form-group.label-static.paid-checkbox-wrapper{ style: "#{'display: none;' if !event.paid }"}
       = f.label :price, class: 'control-label'
-      = f.number_field :price, class: "form-control", in: 0..10000, step: 0.01
+      = f.number_field :price, class: "form-control", in: 0..10000, step: 0.01, required: event.paid ? true : false
 .form-group.label-floating
   = f.label :description, class: 'control-label'
   = f.text_area :description, class: "form-control", required: true

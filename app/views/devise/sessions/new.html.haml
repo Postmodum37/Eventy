@@ -17,8 +17,8 @@
                   .checkbox
                     = f.label :remember_me do
                       = f.check_box :remember_me
-                      %span.checkbox-material
-                        %span.check
+                      -# %span.checkbox-material
+                      -#   %span.check
                       = t('remember_me')
             %footer.card-footer.text-center
               = f.submit t('sign_in'), class: "btn btn-raised btn-primary btn-lg"

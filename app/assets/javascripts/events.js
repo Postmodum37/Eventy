@@ -17,8 +17,10 @@ $(document)
   .on('change', '#event_paid', function(event) {
     if($(this).is(":checked")) {
       $('.paid-checkbox-wrapper').show();
+      $('#event_price').attr({required: 'required'});
     } else {
       $('.paid-checkbox-wrapper').hide();
+      $('#event_price').removeAttr('required')
       $('#event_price').val('');
     }
   });
