@@ -2,21 +2,28 @@
   .mini-event-map.card-img-top{ id: "map-#{rand(100000...100000000)}" }
   .card-block.main-card-content.top-part
     %h3.card-title
-      = link_to event.title, edit_event_path(event)
+      = event.title
     %p.card-text= event.short_description
-    %hr
+  %hr
   .card-block.main-card-content.middle-part
     %ul.list-group.list-group-flush
-      %li.list-group-item Cras justo odio
-      %li.list-group-item Dapibus ac facilisis in
-      %li.list-group-item Vestibulum at eros
+      %li.list-group-item
+        %i.material-icons date_range
+        %span.card-list-span= card_event_date(event)
+      %li.list-group-item
+        %i.material-icons account_balance_wallet
+        %span.card-list-span= card_event_price(event)
+      %li.list-group-item
+        %i.material-icons pin_drop
+        %span.card-list-span= event.address
       .map-marker-coordinates
         = hidden_field_tag 'lat', event.lat
         = hidden_field_tag 'lng', event.lng
         = hidden_field_tag 'address', event.address
+  %hr
   .card-block.main-card-content.bottom-part
     .btn-group.btn-group-justified.btn-group-raised
-      %a.btn{:href => "javascript:void(0)"}
+      %a.btn{:href => event_path(event)}
         = t('more')
         .ripple-container
       %a.btn.btn-warning{:href => "javascript:void(0)"}

@@ -39,10 +39,13 @@ lt:
   max_participants: Max. Dalyvių
   sidebar-toggle:  Šoninio menių mygttukas
   paid: Mokamas
+  free: Nemokamas
   category: Kategorija
   place: Vieta
   by_category: Pagal kategoriją
   by_place: Pagal vietą
+  today: Šiandien
+  tomorrow: Rytoj
 
   categories:
     singular:

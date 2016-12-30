@@ -28,4 +28,15 @@ module ApplicationHelper
         notice: "glyphicon-info-sign"
     }[flash_type.to_sym] || 'glyphicon-screenshot'
   end
+
+  def card_event_date(event)
+    return "#{t('today')} #{event.start_date.strftime('%H:%S')}" if event.start_date.today?
+    return "#{t('tomorrow')} #{event.start_date.strftime('%H:%S')}" if event.start_date.to_date == Date.tomorrow
+    event.start_date.strftime('%Y/%m/%d %H:%M')
+  end
+
+  def card_event_price(event)
+    return t('free') unless event.paid
+    "#{t('paid')}: #{format('%.2f', event.price)}€"
+  end
 end
