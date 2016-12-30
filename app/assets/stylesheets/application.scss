@@ -24,3 +24,31 @@ nav.navbar.navbar-default {
   margin-left: 0px;
   font-size: 34px;
 }
+
+.main-card-content {
+  padding-left: 10px;
+  padding-right: 10px;
+  .top_part {
+
+  }
+  .middle-part {
+
+  }
+}
+
+.card-footer {
+  padding: 0px 10px 0px 10px !important;
+}
+
+li.sidebar-brand {
+  color: #999999;
+  height: 50px;
+  font-size: 22px;
+  a {
+    color: #fff !important;
+  }
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+    display: none;
+}

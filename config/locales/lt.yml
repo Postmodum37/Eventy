@@ -23,6 +23,8 @@ lt:
   recent_events: Naujausi Renginiai
   register_meesage: Register an Account
   register: Registracija
+  register_to_event: Registruotis
+  more: Daugiau
   remember_me: Atsiminti mane
   sign_in: Prisijungti
   sign_up: Registruotis
@@ -36,19 +38,104 @@ lt:
   min_participants: Min. Dalyvių
   max_participants: Max. Dalyvių
   sidebar-toggle:  Šoninio menių mygttukas
+  paid: Mokamas
+  category: Kategorija
+  place: Vieta
+  by_category: Pagal kategoriją
+  by_place: Pagal vietą
 
-  theatricals: Spektakliai
-  concerts: Koncertai
-  seminars: Seminarai
-  exhibition: Parodos
-  premieres: Premjeros
-  sport: Sportas
-  training: Mokymai
-  parties: Vakarėliai
-  initiatives: Iniciatyvos
-  children: Vaikams
-  festivals: Festivaliai
-  other: Kita
+  categories:
+    singular:
+      theatricals: Spektaklis
+      concerts: Koncertas
+      seminars: Seminaras
+      exhibition: Paroda
+      premieres: Premjera
+      sport: Sportas
+      training: Mokymai
+      parties: Vakarėlis
+      initiatives: Iniciatyva
+      children: Vaikams
+      festivals: Festivalis
+      other: Kita
+    plural:
+      theatricals: Spektakliai
+      concerts: Koncertai
+      seminars: Seminarai
+      exhibition: Parodos
+      premieres: Premjeros
+      sport: Sportas
+      training: Mokymai
+      parties: Vakarėliai
+      initiatives: Iniciatyvos
+      children: Vaikams
+      festivals: Festivaliai
+      other: Kita
+  places:
+    singular:
+      outdoor_spaces: Lauko erdvė
+      art_spaces: Meno erdvė
+      restaurants: Restoranas
+      scientific_institutions: Mokslo įstaiga
+      conference_halls: Konferencijų salė
+      other_institutions: Kitos įstaiga
+      bars: Baras
+      hotels: Viešbutis
+      places_to_visit: Lankytina vieta
+      commercial_spaces: Prekybos vieta
+      sports_centers: Sporto centras
+      museums: Muziejus
+      concert_halls: Koncertų salė
+      historical_objects: Istorinis objektas
+      cafes: Kavinė
+      locations: Vietovė
+      night_clubs: Naktinis klubas
+      libraries: Biblioteka
+      night_bars: Naktinis baras
+      amusement_parks: Pramogų parkas
+      theatres: Teatras
+      self_development_centers: Saviugdos centras
+      dance_studios: Šokių studija
+      sports_arenas: Sporto arena
+      spas: SPA centras
+      religious_institutions: Religinė įstaiga
+      bowling: Boulingas
+      cinemas: Kino teatras
+      state_institutions: Valstybinė įstaiga
+      medical_institutions: Medicinos įstaiga
+      other: Kita
+    plural:
+      outdoor_spaces: Lauko erdvės
+      art_spaces: Meno erdvės
+      restaurants: Restoranai
+      scientific_institutions: Mokslo įstaigos
+      conference_halls: Konferencijų salės
+      other_institutions: Kitos įstaigos
+      bars: Barai
+      hotels: Viešbučiai
+      places_to_visit: Lankytinos vietos
+      commercial_spaces: Prekybos vietos
+      sports_centers: Sporto centrai
+      museums: Muziejai
+      concert_halls: Koncertų salės
+      historical_objects: Istoriniai objektai
+      cafes: Kavinės
+      locations: Vietovės
+      night_clubs: Naktiniai klubai
+      libraries: Bibliotekos
+      night_bars: Naktiniai barai
+      amusement_parks: Pramogų parkai
+      theatres: Teatrai
+      self_development_centers: Saviugdos centrai
+      dance_studios: Šokių studijos
+      sports_arenas: Sporto arenos
+      spas: SPA centrai
+      religious_institutions: Religinės įstaigos
+      bowling: Boulingas
+      cinemas: Kino teatrai
+      state_institutions: Valstybinės įstaigos
+      medical_institutions: Medicinos įstaigos
+      other: Kita
 
   minimum_password: "(Mažiausiai %{length} simboliai)"
 
@@ -70,6 +157,7 @@ lt:
           description: Aprašymas
           min_participants: Min. Dalyvių
           max_participants: Max. Dalyvių
+          category: Kategorija
         user:
           email: E. Paštas
           first_name: Vardas

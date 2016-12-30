@@ -11,14 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require material
 //= require ripples
-//= require turbolinks
 //= require underscore
 //= require jquery.geocomplete
 //= require gmaps/google
 
+$(document).ready(function() {
+  $.material.init();
+});
 
 $('#menu-toggle').click(function(event) {
   event.preventDefault();

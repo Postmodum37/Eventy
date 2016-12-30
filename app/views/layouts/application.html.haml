@@ -10,8 +10,10 @@
 
     %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
     %script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}
+    %link{:href => "//fonts.googleapis.com/css?family=Roboto:300,400,500,700", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "//fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet", :type => "text/css"}/
 
-    = stylesheet_link_tag    'application', params[:controller], media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', params[:controller], media: 'all'
 
     = csrf_meta_tags
 
@@ -22,25 +24,20 @@
       #sidebar-wrapper
         %ul.sidebar-nav
           %li.sidebar-brand
-            %a{:href => "#"}
-              Start Bootstrap
-          %li
-            %a{:href => "#"} Dashboard
-          %li
-            %a{:href => "#"} Shortcuts
-          %li
-            %a{:href => "#"} Overview
-          %li
-            %a{:href => "#"} Events
-          %li
-            %a{:href => "#"} About
-          %li
-            %a{:href => "#"} Services
-          %li
-            %a{:href => "#"} Contact
+            %a.by-category
+              = t('by_category')
+          - Event::CATEGORIES.each do |category|
+            %li
+              %a{:href => "#"}= t("categories.plural.#{category}")
+          %li.sidebar-brand
+            %a.by-place
+              = t('by_place')
+          - Event::PLACES.each do |place|
+            %li
+              %a{:href => "#"}= t("places.plural.#{place}")
       #page-content-wrapper
+        = render partial: 'shared/flash' unless flash.empty?
         .container-fluid
-          = render partial: 'shared/flash' unless flash.empty?
           = yield
 
-  = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', params[:controller]

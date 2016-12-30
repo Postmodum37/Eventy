@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(version: 20161229005503) do
     t.integer  "capacity"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "min_participants"
     t.integer  "max_participants"
     t.string   "category"
     t.string   "place"
-    t.boolean  "paid"
+    t.boolean  "paid",             default: false
     t.decimal  "price"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end

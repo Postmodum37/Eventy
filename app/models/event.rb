@@ -2,12 +2,16 @@ class Event < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :user, :start_date, :end_date, presence: true
 
-  CATEGORY_LT = ['spektakliai', 'koncertai', 'seminarai', 'parodos', 'premjeros',
-                 'sportas', 'mokymai', 'vakareliai', 'iniciatyvos', 'vaikams',
-                 'festivaliai', 'kita']
-  CATEGORY_EN = ['theatricals', 'concerts', 'seminars', 'exhibition', 'premieres',
-                 'sport', 'training', 'parties', 'initiatives', 'children', 'festivals']
-
+  CATEGORIES = ['theatricals', 'concerts', 'seminars', 'exhibition', 'premieres',
+                'sport', 'training', 'parties', 'initiatives', 'children', 'festivals',
+                'other']
+  PLACES = ['outdoor_spaces', 'art_spaces', 'restaurants', 'scientific_institutions',
+            'conference_halls', 'other_institutions', 'bars', 'hotels', 'places_to_visit',
+            'commercial_spaces', 'sports_centers', 'museums', 'concert_halls',
+            'historical_objects', 'cafes', 'locations', 'night_clubs', 'libraries',
+            'night_bars', 'amusement_parks', 'theatres', 'self_development_centers',
+            'dance_studios', 'sports_arenas', 'spas', 'religious_institutions', 'bowling',
+            'cinemas', 'state_institutions', 'medical_institutions', 'other']
   belongs_to :user
   # def to_param
   #   title

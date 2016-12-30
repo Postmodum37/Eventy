@@ -1,17 +1,24 @@
-.panel
+.card
   .mini-event-map.card-img-top{ id: "map-#{rand(100000...100000000)}" }
-  .card-block
-    %h4.card-title
+  .card-block.main-card-content.top-part
+    %h3.card-title
       = link_to event.title, edit_event_path(event)
     %p.card-text= event.short_description
-  %ul.list-group.list-group-flush
-    %li.list-group-item Cras justo odio
-    %li.list-group-item Dapibus ac facilisis in
-    %li.list-group-item Vestibulum at eros
-  .card-block
-    %a.card-link{:href => "#"} Card link
-    %a.card-link{:href => "#"} Another link
-    .map-marker-coordinates
-      = hidden_field_tag 'lat', event.lat
-      = hidden_field_tag 'lng', event.lng
-      = hidden_field_tag 'address', event.address
+    %hr
+  .card-block.main-card-content.middle-part
+    %ul.list-group.list-group-flush
+      %li.list-group-item Cras justo odio
+      %li.list-group-item Dapibus ac facilisis in
+      %li.list-group-item Vestibulum at eros
+      .map-marker-coordinates
+        = hidden_field_tag 'lat', event.lat
+        = hidden_field_tag 'lng', event.lng
+        = hidden_field_tag 'address', event.address
+  .card-block.main-card-content.bottom-part
+    .btn-group.btn-group-justified.btn-group-raised
+      %a.btn{:href => "javascript:void(0)"}
+        = t('more')
+        .ripple-container
+      %a.btn.btn-warning{:href => "javascript:void(0)"}
+        = t('register_to_event')
+        .ripple-container

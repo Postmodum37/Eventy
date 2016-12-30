@@ -13,6 +13,16 @@ function triggerChange() {
   $('#event_postal_code').trigger("change");
 }
 
+$(document)
+  .on('change', '#event_paid', function(event) {
+    if($(this).is(":checked")) {
+      $('.paid-checkbox-wrapper').show();
+    } else {
+      $('.paid-checkbox-wrapper').hide();
+      $('#event_price').val('');
+    }
+  });
+
 $(document).ready(function() {
   if (($('.event-action-title').text() === editEventTitleEN) || ($('.event-action-title').text() === editEventTitleLT)) {
     $("#event_address")
