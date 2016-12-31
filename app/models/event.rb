@@ -2,6 +2,9 @@ class Event < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :user, :start_date, :end_date, presence: true
 
+  has_attached_file :banner, styles: { medium: '585x585>', thumb: '100x100>' }
+  validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
+
   CATEGORIES = ['theatricals', 'concerts', 'seminars', 'exhibition', 'premieres',
                 'sport', 'training', 'parties', 'initiatives', 'children', 'festivals',
                 'other']

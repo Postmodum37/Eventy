@@ -9,11 +9,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  position: absolute;
+}
+
+#banner {
+  padding: 0px 0px 0px 0px;
 }
 
 .map-height {
-  height: 500px;
+  height: 500px !important;
 }
 
 #event_description {

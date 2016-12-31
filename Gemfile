@@ -52,6 +52,8 @@ gem 'gmaps4rails'
 
 gem 'awesome_print', require: 'ap'
 
+gem 'paperclip'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'

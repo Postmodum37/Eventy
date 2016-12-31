@@ -11,8 +11,14 @@
               .ripple-container
         %hr.smaller-hr
 
-      .col-xs-12.col-md-6.map-height
-        #map
+      .col-xs-12.col-md-6
+        .row
+          .col-md-12#map.map-height
+
+          - if @event.banner.present?
+            .col-md-12#banner
+              = image_tag @event.banner.url(:medium), class: 'img-responsive'
+
       .col-xs-12.col-md-6
         = form_for(@event, url: { action: 'update' }, html: { role: "form" }) do |f|
           = devise_bootstrap_error_messages!

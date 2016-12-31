@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229005503) do
+ActiveRecord::Schema.define(version: 20161231001412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,18 @@ ActiveRecord::Schema.define(version: 20161229005503) do
     t.integer  "capacity"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "min_participants"
     t.integer  "max_participants"
     t.string   "category"
     t.string   "place"
-    t.boolean  "paid",             default: false
+    t.boolean  "paid",                default: false
     t.decimal  "price"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 

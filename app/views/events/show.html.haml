@@ -11,8 +11,16 @@
               .ripple-container
         %hr.smaller-hr
 
+      .col-xs-12.col-md-6
+        .row
+          .col-md-12#map.map-height
 
-      .col-xs-12.col-md-5
+          - if @event.banner.present?
+            .col-md-12#banner
+              = image_tag @event.banner.url(:medium), class: 'img-responsive'
+
+
+      .col-xs-12.col-md-6
         = form_for(@event, url: { action: 'update' }, html: { role: "form" }) do |f|
           = devise_bootstrap_error_messages!
           .coordinates
@@ -68,7 +76,7 @@
           .row
             .col-md-6
               .form-group.zero-margin-top
-                .checkbox.pull-right
+                .checkbox.text-center
                   = f.label :paid do
                     = f.check_box :paid, disabled: true
                     = t('paid')
@@ -79,5 +87,3 @@
           .form-group.label-floating
             = f.label :description, class: 'control-label'
             = f.text_area :description, class: "form-control", required: true, disabled: true
-      .col-xs-12.col-md-7.map-height
-        #map
