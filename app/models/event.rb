@@ -16,6 +16,9 @@ class Event < ApplicationRecord
             'dance_studios', 'sports_arenas', 'spas', 'religious_institutions', 'bowling',
             'cinemas', 'state_institutions', 'medical_institutions', 'other']
   belongs_to :user
+
+  scope :by_category, ->(category) { where(category: category) }
+  scope :by_place, ->(place) { where(place: place) }
   # def to_param
   #   title
   # end

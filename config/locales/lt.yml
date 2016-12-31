@@ -50,6 +50,9 @@ lt:
   edit_event: Redaguoti Renginį
   event_edit: Redaguoti
   upload_banner: Įkelti paveikslėlį
+  return_to_root: Pagrindinis
+  no_events: Deja, renginių nerasta.
+  all_events: Visi renginiai
 
   categories:
     singular:

@@ -39,4 +39,14 @@ module ApplicationHelper
     return t('free') unless event.paid
     "#{t('paid')}: #{format('%.2f', event.price)}€"
   end
+
+  def event_index_header(type, group)
+    if type.present? && group.present? && group.eql?('place')
+      t('places.plural.' + type)
+    elsif type.present? && group.present? && group.eql?('category')
+      t('categories.plural.' + type)
+    else
+      t('all_events')
+    end
+  end
 end

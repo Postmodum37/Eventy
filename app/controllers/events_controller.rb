@@ -35,6 +35,16 @@ class EventsController < ApplicationController
     redirect_to :back, flash: { success: t('flash.dsuccess') }
   end
 
+  def index
+    if params[:group].present? && params[:type].present? && params[:group].eql?('category')
+      @events = Event.by_category(params[:type])
+    elsif params[:group].present? && params[:type].present? && params[:group].eql?('place')
+      @events = Event.by_place(params[:type])
+    else
+      @events = Event.all.where('end_date > ?', Time.zone.now - 2.hours)
+    end
+  end
+
   private
 
   def set_event

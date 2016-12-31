@@ -1,0 +1,12 @@
+.row
+  .col-md-12
+    %h3= event_index_header(params[:type], params[:group])
+    %hr
+    .row
+      - if @events.count.zero?
+        .col-sm-12
+          = render partial: '/shared/no_events'
+      - else
+        - @events.each do |event|
+          .col-md-3.col-sm-12
+            = render partial: '/events/event_card', locals: { event: event }

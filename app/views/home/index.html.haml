@@ -4,17 +4,17 @@
     %hr
     .row.recent-events
       - @recent_events.each do |event|
-        .col-md-3
+        .col-md-3.col-sm-12
           = render partial: '/events/event_card', locals: { event: event }
     %h3= t('todays_events')
     %hr
     .row.todays-events
       - @todays_events.each do |event|
-        .col-md-3
+        .col-md-3.col-sm-12
           = render partial: '/events/event_card', locals: { event: event }
     %h3= t('last_events')
     %hr
     .row.last-events
       - @last_events.each do |event|
-        .col-md-3
+        .col-md-3.col-sm-12
           = render partial: '/events/event_card', locals: { event: event }

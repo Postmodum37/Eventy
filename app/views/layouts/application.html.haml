@@ -26,15 +26,19 @@
           %li.sidebar-brand
             %a.by-category
               = t('by_category')
-          - Event::CATEGORIES.each do |category|
+          - Event.all.group(:category).count.each do |type, count|
             %li
-              %a{:href => "#"}= t("categories.plural.#{category}")
+              %a{:href => events_path(type: type, group: 'category')}
+                %span= t("categories.plural.#{type}")
+                %span.pull-right.side-count= count
           %li.sidebar-brand
             %a.by-place
               = t('by_place')
-          - Event::PLACES.each do |place|
+          - Event.all.group(:place).count.each do |type, count|
             %li
-              %a{:href => "#"}= t("places.plural.#{place}")
+              %a{:href => events_path(type: type, group: 'place')}
+                %span= t("places.plural.#{type}")
+                %span.pull-right.side-count= count
       #page-content-wrapper
         = render partial: 'shared/flash' unless flash.empty?
         .container-fluid
