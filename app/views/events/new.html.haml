@@ -1,10 +1,12 @@
 .container
   .row
     .card.card-block.register-card
+      .col-xs-12.col-md-12
+        %h2.event-action-title.edit-event= t('new_event')
+        %hr.smaller-hr
       .col-xs-12.col-md-6.map-height
         #map
       .col-xs-12.col-md-6
-        %h4.text-xs-center.event-action-title.new-event= t('new_event')
         = form_for(@event, url: { action: 'create' }, html: { role: "form" }) do |f|
           = devise_bootstrap_error_messages!
           = render partial: 'form', locals: { event: @event, action: 'new', f: f }

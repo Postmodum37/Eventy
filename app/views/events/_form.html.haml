@@ -3,80 +3,79 @@
   = f.hidden_field :lng, data: { geo: 'lng' }
 .form-group.label-floating
   = f.label :title, class: 'control-label'
-  = f.text_field :title, autofocus: true, class: "form-control", required: true, disabled: action.eql?('show') ? true : false
+  = f.text_field :title, autofocus: true, class: "form-control", required: true
 .form-group.label-floating
   = f.label :address, class: 'control-label'
-  = f.text_field :address, class: "form-control", placeholder: '', required: true, data: { geo: 'formatted_address' }, disabled: action.eql?('show') ? true : false
+  = f.text_field :address, class: "form-control", placeholder: '', required: true, data: { geo: 'formatted_address' }
 .row
   .col-md-6
     .form-group.label-floating
       = f.label :city, class: 'control-label'
-      = f.text_field :city, class: "form-control", required: true, data: { geo: 'locality' }, disabled: action.eql?('show') ? true : false
+      = f.text_field :city, class: "form-control", required: true, data: { geo: 'locality' }
   .col-md-6
     .form-group.label-floating
       = f.label :postal_code, class: 'control-label'
-      = f.text_field :postal_code, class: "form-control", required: true, data: { geo: 'postal_code' }, disabled: action.eql?('show') ? true : false
+      = f.text_field :postal_code, class: "form-control", required: true, data: { geo: 'postal_code' }
 .row
   .col-md-6
     .form-group.label-floating
       = f.label :street, class: 'control-label'
-      = f.text_field :street, class: "form-control", required: true, data: { geo: 'route' }, disabled: action.eql?('show') ? true : false
+      = f.text_field :street, class: "form-control", required: true, data: { geo: 'route' }
   .col-md-6
     .form-group.label-floating
       = f.label :street_number, class: 'control-label'
-      = f.text_field :street_number, class: "form-control", required: true, data: { geo: 'street_number' }, disabled: action.eql?('show') ? true : false
+      = f.text_field :street_number, class: "form-control", required: true, data: { geo: 'street_number' }
 .row
   .col-md-6
     .form-group.label-floating
       = f.label :contact_phone, class: 'control-label'
-      = f.phone_field :contact_phone, class: "form-control", disabled: action.eql?('show') ? true : false
+      = f.phone_field :contact_phone, class: "form-control"
   .col-md-6
     .form-group.label-floating
       = f.label :contact_email, class: 'control-label'
-      = f.email_field :contact_email, class: "form-control", disabled: action.eql?('show') ? true : false
+      = f.email_field :contact_email, class: "form-control"
 .row
   .col-md-6
     .form-group.label-static
       = f.label :start_date, class: 'control-label'
-      = f.datetime_local_field :start_date, class: "form-control", required: true, disabled: action.eql?('show') ? true : false
+      = f.datetime_local_field :start_date, class: "form-control", required: true
   .col-md-6
     .form-group.label-static
       = f.label :end_date, class: 'control-label'
-      = f.datetime_local_field :end_date, class: "form-control", required: true, disabled: action.eql?('show') ? true : false
+      = f.datetime_local_field :end_date, class: "form-control", required: true
 .row
   .col-md-6
     .form-group.label-static
       = f.label :category, class: 'control-label'
-      = f.select :category, Event::CATEGORIES.sort_by { |e| t("categories.singular.#{e}") }.map { |e| [t("categories.singular.#{e}"), e]  }, {}, class: "form-control", required: true, include_blank: false, disabled: action.eql?('show') ? true : false
+      = f.select :category, Event::CATEGORIES.sort_by { |e| t("categories.singular.#{e}") }.map { |e| [t("categories.singular.#{e}"), e]  }, {}, class: "form-control", required: true, include_blank: false
   .col-md-6
     .form-group.label-static
       = f.label :place, class: 'control-label'
-      = f.select :place, Event::PLACES.sort_by { |e| t("places.singular.#{e}") }.map { |e| [t("places.singular.#{e}"), e]  }, {}, class: "form-control", required: true, include_blank: false, disabled: action.eql?('show') ? true : false
+      = f.select :place, Event::PLACES.sort_by { |e| t("places.singular.#{e}") }.map { |e| [t("places.singular.#{e}"), e]  }, {}, class: "form-control", required: true, include_blank: false
 
 .row
   .col-md-3
     .form-group.label-static
       = f.label :min_participants, class: 'control-label'
-      = f.number_field :min_participants, class: "form-control", required: true, in: 0..10000, disabled: action.eql?('show') ? true : false
+      = f.number_field :min_participants, class: "form-control", required: true, in: 0..10000
   .col-md-3
     .form-group.label-static
       = f.label :max_participants, class: 'control-label'
-      = f.number_field :max_participants, class: "form-control", required: true, in: 0..10000, disabled: action.eql?('show') ? true : false
+      = f.number_field :max_participants, class: "form-control", required: true, in: 0..10000
   .col-md-3
     .form-group
       .checkbox
         = f.label :paid do
-          = f.check_box :paid, disabled: action.eql?('show') ? true : false
+          = f.check_box :paid
           -# %span.checkbox-material
           -#   %span.check
           = t('paid')
   .col-md-3
     .form-group.label-static.paid-checkbox-wrapper{ style: "#{'display: none;' if !event.paid }"}
       = f.label :price, class: 'control-label'
-      = f.number_field :price, class: "form-control", in: 0.01..10000, step: 0.01, required: event.paid ? true : false, disabled: action.eql?('show') ? true : false
+      = f.number_field :price, class: "form-control", in: 0.01..10000, step: 0.01, required: event.paid ? true : false
 .form-group.label-floating
   = f.label :description, class: 'control-label'
-  = f.text_area :description, class: "form-control", required: true, disabled: action.eql?('show') ? true : false
+  = f.text_area :description, class: "form-control", required: true
 
-- unless action.eql?('show')
-  = f.submit "#{action.eql?('new') ? t('create_event') : t('update_event')}", class: "btn btn-primary btn-raised"
+= f.submit "#{action.eql?('new') ? t('create_event') : t('update_event')}", class: "btn btn-primary btn-raised"

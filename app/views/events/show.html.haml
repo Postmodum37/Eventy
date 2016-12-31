@@ -1,10 +1,83 @@
 .container
   .row
     .card.card-block.show-card
-      .col-xs-12.col-md-6.map-height
-        #map
-      .col-xs-12.col-md-6
-        %h4.text-xs-center.event-action-title.edit-event= t('edit_event')
+      .col-xs-12.col-md-12
+        .row
+          .col-md-3
+            %h2.event-action-title.edit-event= t('show_event')
+          .col-md-offset-6.col-md-3
+            %a.btn.btn-raised.btn-default.btn-sm.event-side-btn.pull-right{:href => edit_event_path(@event)}
+              = t('event_edit')
+              .ripple-container
+        %hr.smaller-hr
+
+
+      .col-xs-12.col-md-5
         = form_for(@event, url: { action: 'update' }, html: { role: "form" }) do |f|
           = devise_bootstrap_error_messages!
-          = render partial: 'form', locals: { event: @event, action: 'show', f: f }
+          .coordinates
+            = f.hidden_field :lat, data: { geo: 'lat' }
+            = f.hidden_field :lng, data: { geo: 'lng' }
+          .form-group
+            = f.label :title, class: 'col-md-3 control-label'
+            .col-md-9= f.text_field :title, autofocus: true, class: "form-control", required: true, disabled: true
+          .form-group
+            = f.label :address, class: 'col-md-3 control-label'
+            .col-md-9= f.text_field :address, class: "form-control", placeholder: '', required: true, data: { geo: 'formatted_address' }, disabled: true
+          .form-group
+            = f.label :city, class: 'col-md-3 control-label'
+            .col-md-9= f.text_field :city, class: "form-control", required: true, data: { geo: 'locality' }, disabled: true
+          .form-group
+            = f.label :street, class: 'col-md-3 control-label'
+            .col-md-9= f.text_field :street, class: "form-control", required: true, data: { geo: 'route' }, disabled: true
+          .form-group
+            = f.label :street_number, class: 'col-md-3 control-label'
+            .col-md-9= f.text_field :street_number, class: "form-control", required: true, data: { geo: 'street_number' }, disabled: true
+          .form-group
+            = f.label :postal_code, class: 'col-md-3 control-label'
+            .col-md-9= f.text_field :postal_code, class: "form-control", required: true, data: { geo: 'postal_code' }, disabled: true
+
+          .form-group
+            = f.label :contact_phone, class: 'col-md-3 control-label'
+            .col-md-9= f.phone_field :contact_phone, class: "form-control", disabled: true
+          .form-group
+            = f.label :contact_email, class: 'col-md-3 control-label'
+            .col-md-9= f.email_field :contact_email, class: "form-control", disabled: true
+          .form-group
+            = f.label :start_date, class: 'col-md-3 control-label'
+            .col-md-9= f.datetime_local_field :start_date, class: "form-control", required: true, disabled: true
+          .form-group
+            = f.label :end_date, class: 'col-md-3 control-label'
+            .col-md-9= f.datetime_local_field :end_date, class: "form-control", required: true, disabled: true
+          .form-group
+            = f.label :category, class: 'col-md-3 control-label'
+            .col-md-9= f.select :category, Event::CATEGORIES.sort_by { |e| t("categories.singular.#{e}") }.map { |e| [t("categories.singular.#{e}"), e]  }, {}, class: "form-control", required: true, include_blank: false, disabled: true
+          .form-group
+            = f.label :place, class: 'col-md-3 control-label'
+            .col-md-9= f.select :place, Event::PLACES.sort_by { |e| t("places.singular.#{e}") }.map { |e| [t("places.singular.#{e}"), e]  }, {}, class: "form-control", required: true, include_blank: false, disabled: true
+
+          .row
+            .col-md-6
+              .form-group.zero-margin-top{ style: 'margin-top: 0px;'}
+                = f.label :min_participants, class: 'col-md-6 control-label'
+                .col-md-6= f.number_field :min_participants, class: "form-control", required: true, in: 0..10000, disabled: true
+            .col-md-6
+              .form-group.zero-margin-top{ style: 'margin-top: 0px;'}
+                = f.label :max_participants, class: 'col-md-6 control-label'
+                .col-md-6= f.number_field :max_participants, class: "form-control", required: true, in: 0..10000, disabled: true
+          .row
+            .col-md-6
+              .form-group.zero-margin-top
+                .checkbox.pull-right
+                  = f.label :paid do
+                    = f.check_box :paid, disabled: true
+                    = t('paid')
+            .col-md-6
+              .form-group.paid-checkbox-wrapper.zero-margin-top{ style: "#{'display: none;' if !@event.paid }"}
+                = f.label :price, class: 'col-md-3 control-label'
+                .col-md-9= f.number_field :price, class: "form-control", in: 0.01..10000, step: 0.01, required: @event.paid ? true : false, disabled: true
+          .form-group.label-floating
+            = f.label :description, class: 'control-label'
+            = f.text_area :description, class: "form-control", required: true, disabled: true
+      .col-xs-12.col-md-7.map-height
+        #map

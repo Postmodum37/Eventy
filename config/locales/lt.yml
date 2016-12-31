@@ -5,7 +5,6 @@ lt:
   contact_phone: Telefonas
   create_event: Sukurti Renginį
   description: Aprašymas
-  edit_event: Redaguoti Renginį
   email: E. Paštas
   end_date: Pabaigos Data
   eventy: Eventy
@@ -46,6 +45,10 @@ lt:
   by_place: Pagal vietą
   today: Šiandien
   tomorrow: Rytoj
+  show_event: Renginio Peržiūra
+  event_show: Peržiūrėti
+  edit_event: Redaguoti Renginį
+  event_edit: Redaguoti
 
   categories:
     singular:
@@ -161,6 +164,8 @@ lt:
           min_participants: Min. Dalyvių
           max_participants: Max. Dalyvių
           category: Kategorija
+          price: Kaina
+          place: Vieta
         user:
           email: E. Paštas
           first_name: Vardas

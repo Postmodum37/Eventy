@@ -5,6 +5,8 @@ var editEventTitleLT = 'Redaguoti Renginį';
 var editEventTitleEN = 'Edit Event';
 var newEventTitleLT = 'Sukurti Renginį';
 var newEventTitleEN = 'Create an Event';
+var showEventTitleLT = 'Renginio Peržiūra';
+var showEventTitleEN = 'Show Event';
 
 function triggerChange() {
   $('#event_city').trigger("change");
@@ -94,6 +96,36 @@ $(document).ready(function() {
       triggerChange();
     });
 
+  } else if (true) {
+    $("#event_address")
+    .geocomplete({
+      country: 'LT',
+      map: '#map',
+      details: 'form',
+      detailsAttribute: "data-geo",
+      types: ['geocode'],
+      autoselect: true,
+      bounds: true,
+      location: [$('#event_lat').val(), $('#event_lng').val()],
+      mapOptions: {
+        disableDefaultUI: true,
+        zoom: 14,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.DEFAULT,
+          position: google.maps.ControlPosition.RIGHT_CENTER
+        },
+        panControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+        rotateControl: false
+      },
+      markerOptions: {
+        draggable: false
+      }
+    });
   } else {
     console.log('Check Titles.');
   }
