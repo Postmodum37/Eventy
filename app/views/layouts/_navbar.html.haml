@@ -1,17 +1,41 @@
-%nav.navbar.navbar-default.navbar-fixed-top{ role: 'navigation' }
+.navbar.navbar-default.navbar-fixed-top{ role: 'navigation' }
   .container-fluid
     .navbar-header
-      = link_to image_tag("sidebar-toggle.png", size: "55x55", alt: t('sidebar-toggle')), '', id: 'menu-toggle'
-      %a.navbar-brand.pull-right#site-title{:href => root_path}
-        = t('eventy')
-    %ul.nav.navbar-nav.navbar-right
+      %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      -# %i.material-icons more_vert
+      .navbar-brand.pull-left#menu-toggle-brand= link_to image_tag("sidebar-toggle2.png", size: "35x35", alt: t('sidebar-toggle')), '', id: 'menu-toggle', class: ''
+      %a.navbar-brand#site-title{:href => root_path}= t('eventy')
+    .navbar-collapse.navbar-responsive-collapse.collapse{"aria-expanded" => "true"}
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li
+            %a{:href => 'javascript:void(0)' }= t('profile')
+          %li
+            %a{:href => destroy_user_session_path, data: { method: :delete}, rel: 'nofollow'}= t('logout')
+        - else
+          %li
+            %a{:href => new_user_session_path }= t('login')
+          %li
+            %a{:href => new_user_registration_path }= t('register')
+
+
+
+
+-# %nav.navbar.navbar-default.navbar-fixed-top{ role: 'navigation' }
+-#   .container-fluid
+-#     .navbar-header
+-#       = link_to image_tag("sidebar-toggle.png", size: "55x55", alt: t('sidebar-toggle')), '', id: 'menu-toggle'
+-#       %a.navbar-brand.pull-right#site-title{:href => root_path}
+-#
+-#     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         %li
           %a{:href => destroy_user_session_path, data: { method: :delete}, rel: 'nofollow'}= t('logout')
       - else
         %li
           %a{:href => new_user_session_path }= t('login')
-          -# %a.nav-link{:href => '#', data: { toggle: "modal", target: "#loginModal"} }= t('login')
         %li
           %a{:href => new_user_registration_path }= t('register')
-          -# %a.nav-link{:href => '#', data: { toggle: "modal", target: "#registerModal"} }= t('register')

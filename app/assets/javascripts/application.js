@@ -78,3 +78,9 @@ $('#menu-toggle').click(function(event) {
   event.preventDefault();
   $('#wrapper').toggleClass('toggled');
 });
+
+$('ul.nav.navbar-nav.navbar-right li').hover(function() {
+  $(this).addClass('active');
+}, function() {
+  $(this).removeClass('active');
+});

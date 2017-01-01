@@ -53,6 +53,7 @@ lt:
   return_to_root: Pagrindinis
   no_events: Deja, renginių nerasta.
   all_events: Visi renginiai
+  profile: Profilis
 
   categories:
     singular:
