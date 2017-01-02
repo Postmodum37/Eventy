@@ -50,10 +50,17 @@ lt:
   edit_event: Redaguoti Renginį
   event_edit: Redaguoti
   upload_banner: Įkelti paveikslėlį
+  upload_avatar: Įkelti nuotrauką
   return_to_root: Pagrindinis
   no_events: Deja, renginių nerasta.
   all_events: Visi renginiai
   profile: Profilis
+  profile_leave_blank: (palikti tuščią jeigu nenorite keisti)
+  profile_need_current_password: (reikia dabartinio slaptažodio patvirtinti pakeitimams)
+  update: Atnaujinti
+  user_profile: Vartotojo profilis
+  cancel_account: Atšaukti mano paskyrą
+  unhappy: Nepatenkinti?
 
   categories:
     singular:
@@ -177,6 +184,8 @@ lt:
           last_name: Pavardė
           password_confirmation: Slaptažodžio patvirtinimas
           password: Slaptažodis
+          avatar: Vartotojo nuotrauka
+
 
 
   flash:
