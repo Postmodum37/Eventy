@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :user, :start_date, :end_date, presence: true
 
-  has_attached_file :banner, styles: { medium: '585x585>', thumb: '100x100>' }
+  has_attached_file :banner, styles: { medium: '585x500#', thumb: '100x100>' }
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 
   CATEGORIES = ['theatricals', 'concerts', 'seminars', 'exhibition', 'premieres',
@@ -16,6 +16,7 @@ class Event < ApplicationRecord
             'dance_studios', 'sports_arenas', 'spas', 'religious_institutions', 'bowling',
             'cinemas', 'state_institutions', 'medical_institutions', 'other']
   belongs_to :user
+  has_many :comments, as: :commentable
 
   scope :by_category, ->(category) { where(category: category) }
   scope :by_place, ->(place) { where(place: place) }

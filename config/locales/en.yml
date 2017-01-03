@@ -1,64 +1,172 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   address: Address
   city: City
   contact_email: Email
   contact_phone: Phone
-  create_event: Create
+  create_event: Create event
   description: Description
-  edit_event: Edit Event
   email: Email
-  end_date: End Date
+  end_date: End date
   eventy: Eventy
-  first_name: First Name
-  hello: "Hello world"
+  first_name: First name
   last_events: Last Events
-  last_name: Last Name
+  last_name: Last name
   login_meesage: Login to your Account
   login: Login
+  logout: Logout
   new_event: Create an Event
-  password_confirmation: Password Confirmation
+  password_confirmation: Password confirmation
   password: Password
   phone: Phone
-  postal_code: Postal Code
+  postal_code: Postal code
   recent_events: Recent Events
   register_meesage: Register an Account
   register: Register
+  register_to_event: Register
+  more: More
   remember_me: Remember me
   sign_in: Login
   sign_up: Register
   site_title: Eventy
-  start_date: Start Date
-  street_number: Street Number
+  start_date: Start date
+  street_number: Street number
   street: Street
   title: Title
   todays_events: Todays Events
   update_event: Update
+  min_participants: Min. Participants
+  max_participants: Max. Participants
+  sidebar-toggle:  Sidebar button
+  paid: Paid
+  free: Free
+  category: Category
+  place: Place
+  by_category: By Category
+  by_place: By Place
+  today: Today
+  tomorrow: Tomorrow
+  show_event: Event Preview
+  event_show: Preview Event
+  edit_event: Editing Event
+  event_edit: Edit Event
+  upload_banner: Upload picture
+  upload_avatar: Upload photo
+  return_to_root: Return to Main
+  no_events: No Events.
+  all_events: All Events
+  profile: Profile
+  profile_leave_blank: (leave blank if not editing)
+  profile_need_current_password: (need current password to confirm changes)
+  update: Update
+  user_profile: User profile
+  cancel_account: Cancel account
+  unhappy: Unhappy?
+  comments: Comments
+  comment: Comment
+  made_comment: made a comment.
+  add_comment: Add a comment
+
+  categories:
+    singular:
+      theatricals: Theatrical
+      concerts: Concert
+      seminars: Seminar
+      exhibition: Exhibition
+      premieres: Premiere
+      sport: Sport
+      training: Training
+      parties: Party
+      initiatives: Initiative
+      children: Children
+      festivals: Festival
+      other: Other
+    plural:
+      theatricals: Theatricals
+      concerts: Concerts
+      seminars: Seminars
+      exhibition: Exhibitions
+      premieres: Premieres
+      sport: Sport
+      training: Training
+      parties: Parties
+      initiatives: Initiatives
+      children: Children
+      festivals: Festivals
+      other: Other
+  places:
+    singular:
+      outdoor_spaces: Outdoor space
+      art_spaces: Art space
+      restaurants: Restaurant
+      scientific_institutions: Scientific institution
+      conference_halls: Conference hall
+      other_institutions: Other institution
+      bars: Bar
+      hotels: Hotel
+      places_to_visit: Visited place
+      commercial_spaces: Commercial space
+      sports_centers: Sports center
+      museums: Museum
+      concert_halls: Concert hall
+      historical_objects: Historical object
+      cafes: Cafe
+      locations: Locality
+      night_clubs: Night club
+      libraries: Library
+      night_bars: Night bar
+      amusement_parks: Amusement park
+      theatres: Theatre
+      self_development_centers: Self development center
+      dance_studios: Dance studio
+      sports_arenas: Sports arena
+      spas: Spa
+      religious_institutions: Religious institution
+      bowling: Bowling alley
+      cinemas: Cinema
+      state_institutions: State institution
+      medical_institutions: Medical institution
+      other: Other
+    plural:
+      outdoor_spaces: Outdoor spaces
+      art_spaces: Art spaces
+      restaurants: Restaurants
+      scientific_institutions: Scientific institutions
+      conference_halls: Conference halls
+      other_institutions: Other institutions
+      bars: Bars
+      hotels: Hotels
+      places_to_visit: Visited places
+      commercial_spaces: Commercial spaces
+      sports_centers: Sports centers
+      museums: Museums
+      concert_halls: Concert halls
+      historical_objects: Historical objects
+      cafes: Cafes
+      locations: Localities
+      night_clubs: Night clubs
+      libraries: Libraries
+      night_bars: Night bars
+      amusement_parks: Amusement parks
+      theatres: Theatres
+      self_development_centers: Self development centers
+      dance_studios: Dance studios
+      sports_arenas: Sports arenas
+      spas: Spas
+      religious_institutions: Religious institutions
+      bowling: Bowling alleys
+      cinemas: Cinemas
+      state_institutions: State institutions
+      medical_institutions: Medical institutions
+      other: Other
+
+  minimum_password: "(minimum %{length} characters)"
 
   helpers:
       label:
         event:
           contact_email: Email
+          email: Email
+          password: Password
           contact_phone: Phone
           end_date: End Date
           start_date: Start Date
@@ -68,6 +176,19 @@ en:
           street: Street
           city: City
           address: Address
+          description: Description
+          min_participants: Min. Participants
+          max_participants: Max. Participants
+          category: Category
+          price: Price
+          place: Place
+        user:
+          email: Email
+          first_name: First name
+          last_name: Last name
+          password_confirmation: Password confirmation
+          password: Password
+          avatar: User photo
 
   flash:
     event:

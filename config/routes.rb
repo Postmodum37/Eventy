@@ -3,7 +3,14 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   # resources :events, param: :title, except: [:index]
-  resources :events
+  resources :events do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

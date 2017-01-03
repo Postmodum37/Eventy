@@ -17,7 +17,7 @@
 
           - if @event.banner.present?
             .col-md-12#banner
-              = image_tag @event.banner.url(:medium), class: 'img-responsive'
+              = image_tag @event.banner, class: 'img-responsive'
 
 
       .col-xs-12.col-md-6
@@ -87,3 +87,15 @@
           .form-group.label-floating
             = f.label :description, class: 'control-label'
             = f.text_area :description, class: "form-control", required: true, disabled: true
+      .col-xs-12.col-md-12
+        %hr.smaller-hr
+        %h2.event-action-title.edit-event= t('comments')
+        - if user_signed_in?
+          = form_for [@event, Comment.new] do |f|
+            .form-group
+              = f.text_area :body, placeholder: t('add_comment'), class: "form-control"
+            %br/
+            = f.submit t('comment'), class: 'btn btn-default btn-raised'
+        %hr.smaller-hr
+        %ul.comments
+          = render(partial: 'comments/comment', collection: @event.comments)

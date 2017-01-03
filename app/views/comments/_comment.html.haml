@@ -1,0 +1,19 @@
+.panel.panel-white.post.panel-shadow
+  .post-heading
+    .pull-left.image
+      %img.img-circle.avatar{:alt => "user profile image", :src => comment.user.avatar.url(:comment_avatar)}/
+    .pull-left.meta
+      .title.h5
+        %a{:href => 'javascript:void(0)'}
+          %b= comment.user.full_name
+        = t('made_comment')
+      %h6.text-muted.time= time_ago_in_words(comment.created_at)
+  .post-description
+    %p= comment.body
+    -# .stats
+    -#   %a.btn.btn-default.stat-item{:href => "#"}
+    -#     %i.fa.fa-thumbs-up.icon>
+    -#     2
+    -#   %a.btn.btn-default.stat-item{:href => "#"}
+    -#     %i.fa.fa-thumbs-down.icon>
+    -#     12

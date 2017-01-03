@@ -35,8 +35,8 @@ lt:
   todays_events: Šiandienos Renginiai
   update_event: Atnaujinti
   min_participants: Min. Dalyvių
-  max_participants: Max. Dalyvių
-  sidebar-toggle:  Šoninio menių mygttukas
+  max_participants: Maks. Dalyvių
+  sidebar-toggle:  Šoninio menių mygtukas
   paid: Mokamas
   free: Nemokamas
   category: Kategorija
@@ -61,6 +61,8 @@ lt:
   user_profile: Vartotojo profilis
   cancel_account: Atšaukti mano paskyrą
   unhappy: Nepatenkinti?
+  comments: Komentarai
+  comment: Komentuoti
 
   categories:
     singular:
@@ -174,7 +176,7 @@ lt:
           address: Adresas
           description: Aprašymas
           min_participants: Min. Dalyvių
-          max_participants: Max. Dalyvių
+          max_participants: Maks. Dalyvių
           category: Kategorija
           price: Kaina
           place: Vieta
