@@ -26,6 +26,10 @@
       %a.btn{:href => event_path(event)}
         = t('more')
         .ripple-container
-      %a.btn.btn-warning{:href => "javascript:void(0)"}
-        = t('register_to_event')
-        .ripple-container
+      -# = button_to t('register_to_event'), EventRegistration.new(user_id: current_user.id, event_id: event.id), remote: true, class: 'btn btn-warning'
+      - if user_signed_in? && !current_user.registered_to_event?(event)
+        = link_to t('register_to_event'), event_registrations_path(event_registration: { user_id: current_user.id, event_id: event.id }), remote: true, method: :post, class: 'btn btn-warning event-registration-btn registration-available'
+      - elsif user_signed_in? && current_user.registered_to_event?(event)
+        = link_to t('register_to_event'), 'javascript:void(0)', class: 'btn btn-warning event-registration-btn already-registered', disabled: true
+      - else
+        = link_to t('register_to_event'), 'javascript:void(0)', class: 'btn btn-warning event-registration-btn not-signed-in', disabled: true

@@ -84,3 +84,26 @@ $('ul.nav.navbar-nav.navbar-right li').hover(function() {
 }, function() {
   $(this).removeClass('active');
 });
+
+$('a.event-registration-btn.already-registered').on('click', function(event) {
+  event.preventDefault();
+  // Tell user he is already registered
+});
+
+$('a.event-registration-btn.not-signed-in').on('click', function(event) {
+  event.preventDefault();
+  // Tell user he is not signed in
+});
+
+$('a.event-registration-btn.registration-available').on('ajax:success', function(e, data, status, xhr) {
+  $(this).attr({
+    disabled: 'disabled'
+  });
+  $(this).removeAttr('data-remote').removeAttr('href').removeAttr('rel').removeAttr('data-method');
+  $(this).removeClass('registration-available').addClass('already-registered');
+  // Tell user he successfully registered
+});
+
+$('a.event-registration-btn').on('ajax:error', function(e, data, status, xhr) {
+  // Tell user that something went wrong while registering
+});

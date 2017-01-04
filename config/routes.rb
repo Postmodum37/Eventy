@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :comments do
-    resources :comments
-  end
+  resources :event_registrations, only: [:create, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
