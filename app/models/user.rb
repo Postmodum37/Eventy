@@ -11,4 +11,9 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def registered_to_event?(event)
+    return true if EventRegistration.where(user_id: id, event_id: event.id).count > 0
+    false
+  end
 end
