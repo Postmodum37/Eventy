@@ -131,3 +131,21 @@ $(document).ready(function() {
   }
   // $("#event_address").removeAttr('placeholder');
 });
+
+$('a.deny-event-registration').on('ajax:success', function(e, data, status, xhr) {
+  // displayNotification('success', 'Successfully denied registration.');
+  window.location.reload();
+});
+
+$('a.deny-event-registration').on('ajax:error', function(e, data, status, xhr) {
+  displayNotification('warning', 'Something went wrong while denying registration.');
+});
+
+$('a.approve-event-registration').on('ajax:success', function(e, data, status, xhr) {
+  // displayNotification('success', 'Successfully approved registration.');
+  window.location.reload();
+});
+
+$('a.approve-event-registration').on('ajax:error', function(e, data, status, xhr) {
+  displayNotification('warning', 'Something went wrong while approving registration.');
+});

@@ -65,6 +65,18 @@ en:
   comment: Comment
   made_comment: made a comment.
   add_comment: Add a comment
+  event_registrations: Event registrations
+  requested_approval: Requested approval to join this event.
+  requested_approved: Requested approved to join this event.
+  requested_denied: Requested denied to join this event.
+  approve: Approve
+  deny: Deny
+  pending: Pending
+  approved: Approved
+  denied: Denied
+  no_pending_requests: No pending requests.
+  no_approved_requests: No approved requests.
+  no_denied_requests: No denied requests.
 
   categories:
     singular:

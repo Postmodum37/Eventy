@@ -19,6 +19,25 @@
 //= require underscore
 //= require jquery.geocomplete
 //= require gmaps/google
+//= require bootstrap-notify
+
+
+function displayNotification(type, message) {
+  $.notify({
+  	message: message
+  },{
+    delay: 3000,
+  	type: type,
+    placement: {
+  		from: "top",
+  		align: "right",
+	  },
+    animate: {
+  		enter: 'animated fadeInDown',
+  		exit: 'animated fadeOutUp'
+  	}
+  });
+}
 
 function initMap(id) {
   var handler = Gmaps.build('Google');
@@ -86,13 +105,14 @@ $('ul.nav.navbar-nav.navbar-right li').hover(function() {
 });
 
 $('a.event-registration-btn.already-registered').on('click', function(event) {
+  displayNotification('info', 'Already registered to this event.');
   event.preventDefault();
-  // Tell user he is already registered
+
 });
 
 $('a.event-registration-btn.not-signed-in').on('click', function(event) {
+  displayNotification('info', 'Please sign in before registering to an event.');
   event.preventDefault();
-  // Tell user he is not signed in
 });
 
 $('a.event-registration-btn.registration-available').on('ajax:success', function(e, data, status, xhr) {
@@ -101,9 +121,9 @@ $('a.event-registration-btn.registration-available').on('ajax:success', function
   });
   $(this).removeAttr('data-remote').removeAttr('href').removeAttr('rel').removeAttr('data-method');
   $(this).removeClass('registration-available').addClass('already-registered');
-  // Tell user he successfully registered
+  displayNotification('success', 'Successfully registered to an event.');
 });
 
 $('a.event-registration-btn').on('ajax:error', function(e, data, status, xhr) {
-  // Tell user that something went wrong while registering
+  displayNotification('warning', 'Something went wrong while registering to an event.');
 });

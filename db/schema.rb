@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104193023) do
+ActiveRecord::Schema.define(version: 20170105132919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20170104193023) do
   create_table "event_registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.boolean  "confirmed",  default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "confirmed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -46,16 +46,15 @@ ActiveRecord::Schema.define(version: 20170104193023) do
     t.datetime "end_date"
     t.string   "contact_email"
     t.string   "contact_phone"
-    t.integer  "capacity"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "min_participants"
     t.integer  "max_participants"
     t.string   "category"
     t.string   "place"
-    t.boolean  "paid",                default: false
+    t.boolean  "paid"
     t.decimal  "price"
     t.string   "banner_file_name"
     t.string   "banner_content_type"
