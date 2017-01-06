@@ -10,7 +10,16 @@
               = t('event_edit')
               .ripple-container
         %hr.smaller-hr
-
+      - if user_signed_in? && current_user.eligible_to_vote?(@event) && !current_user.reviews.reviewed_event?(@event)
+        .col-xs-12.col-md-8.col-md-offset-2
+          .well
+            %h4= t('leave_review_message')
+            = form_for [@event, Review.new] do |f|
+              .form-group
+                = f.text_area :body, placeholder: t('add_comment'), class: "form-control"
+              .form-group.rating-form-group
+                #star-rating
+              = f.submit t('submit'), class: 'btn btn-default btn-raised'
       .col-xs-12.col-md-6
         .row
           .col-md-12#map.map-height
@@ -111,7 +120,7 @@
                 = f.submit t('comment'), class: 'btn btn-default btn-raised'
               %hr.smaller-hr
               %ul.comments-owner
-                = render(partial: 'comments/comment', collection: @event.comments)
+                = render(partial: 'comments/comment', collection: (@event.comments + @event.reviews).sort_by { |e| e.created_at })
             .col-md-6.col-xs-12
               %h2= t('event_registrations')
               %hr.smaller-hr
@@ -143,8 +152,8 @@
                           %h4.list-group-item-heading= event_registration.user.full_name
                           %p.list-group-item-text= t('requested_approval')
                           .btn-group.btn-group-justified.btn-group-raised.list-group-item-text
-                            = link_to t('deny'), event_registration_path(@event, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
-                            = link_to t('approve'), event_registration_path(@event, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
+                            = link_to t('deny'), event_event_registration_path(@event, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
+                            = link_to t('approve'), event_event_registration_path(@event, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
                       .list-group-separator
                     - if @event.event_registrations.pending.count.zero?
                       %p.text-center= t('no_pending_requests')
@@ -174,40 +183,3 @@
                       .list-group-separator
                     - if @event.event_registrations.denied.count.zero?
                       %p.text-center= t('no_denied_requests')
-
-
-
-
-
-              -# .list-group
-              -#   - @event.event_registrations.pending.order(created_at: :asc).each do |event_registration|
-              -#     .list-group-item
-              -#       .row-action-primary
-              -#         %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
-              -#       .row-content
-              -#         .least-content= time_ago_in_words(event_registration.created_at)
-              -#         %h4.list-group-item-heading= event_registration.user.full_name
-              -#         %p.list-group-item-text= t('requested_approval')
-              -#         .btn-group.btn-group-justified.btn-group-raised.list-group-item-text
-              -#           = link_to t('deny'), event_registration_path(@event, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
-              -#           = link_to t('approve'), event_registration_path(@event, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
-              -#           -# %a.btn.btn-warning.btn-xs{:href => "javascript:void(0)"}= t('deny')
-              -#           -# %a.btn.btn-success.btn-xs{:href => "javascript:void(0)"}= t('approve')
-              -#
-              -#     .list-group-separator
-                -# .list-group-item
-                -#   .row-action-primary
-                -#     %i.material-icons folder
-                -#   .row-content
-                -#     .least-content 10m
-                -#     %h4.list-group-item-heading Tile with a label
-                -#     %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
-                -# .list-group-separator
-                -# .list-group-item
-                -#   .row-action-primary
-                -#     %i.material-icons folder
-                -#   .row-content
-                -#     .least-content 8m
-                -#     %h4.list-group-item-heading Tile with a label
-                -#     %p.list-group-item-text Maecenas sed diam eget risus varius blandit.
-                -# .list-group-separator

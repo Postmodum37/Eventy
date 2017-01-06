@@ -77,6 +77,8 @@ en:
   no_pending_requests: No pending requests.
   no_approved_requests: No approved requests.
   no_denied_requests: No denied requests.
+  submit: Submit
+  leave_review_message: You are eligible to rate the event and leave a comment!
 
   categories:
     singular:

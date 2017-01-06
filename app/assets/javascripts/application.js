@@ -20,6 +20,7 @@
 //= require jquery.geocomplete
 //= require gmaps/google
 //= require bootstrap-notify
+//= require jquery.raty
 
 
 function displayNotification(type, message) {

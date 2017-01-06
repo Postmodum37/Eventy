@@ -18,6 +18,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable
   has_many :event_registrations
+  has_many :reviews
 
   scope :by_category, ->(category) { where(category: category) }
   scope :by_place, ->(place) { where(place: place) }

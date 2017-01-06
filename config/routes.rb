@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # resources :events, param: :title, except: [:index]
   resources :events do
-    resources :comments
+    resources :comments, only: [:new, :create]
+    resources :reviews, only: [:create]
+    resources :event_registrations, only: [:create, :update]
   end
-
-  resources :event_registrations, only: [:create, :update]
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

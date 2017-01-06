@@ -10,6 +10,8 @@
       %h6.text-muted.time= time_ago_in_words(comment.created_at)
   .post-description
     %p= comment.body
+    - if comment.class.name.eql?('Review')
+      %span.review-rating{ data: { score: comment.rating }}
     -# .stats
     -#   %a.btn.btn-default.stat-item{:href => "#"}
     -#     %i.fa.fa-thumbs-up.icon>

@@ -149,3 +149,16 @@ $('a.approve-event-registration').on('ajax:success', function(e, data, status, x
 $('a.approve-event-registration').on('ajax:error', function(e, data, status, xhr) {
   displayNotification('warning', 'Something went wrong while approving registration.');
 });
+
+$('#star-rating').raty({
+    path: '/assets',
+    scoreName: 'review[rating]'
+});
+
+$('.review-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+        return $(this).attr('data-score');
+  }
+});
