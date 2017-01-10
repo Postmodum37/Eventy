@@ -23,6 +23,28 @@
     #wrapper
       #sidebar-wrapper
         %ul.sidebar-nav
+          %li.profile
+            #profile-image
+              = image_tag '/images/missing.png', size: '100x100', class: 'img-responsive img-circle center-block', alt: 'Profile avatar'
+            #profile-message.text-center
+              - if user_signed_in?
+                .profile-message-text= current_user.try(:full_name)
+              - else
+                .profile-message-text= t('guest')
+            #profile-actions
+              .btn-group-horizontal.text-center
+                .btn.btn-link.btn-xs.profile-action-btn Profile
+                .btn.btn-link.btn-xs.profile-action-btn Logout
+          %hr.profile-spacer
+            %li
+              %a{:href => 'javasript:void(0)'}
+                %i.material-icons.sidebar-icon event
+                %span.sidebar-icon-text= t('new_event')
+            %li
+              %a{:href => 'javasript:void(0)'}
+                %i.material-icons.sidebar-icon youtube_searched_for
+                %span.sidebar-icon-text= t('search')
+          %hr.profile-spacer
           %li.sidebar-brand
             %a.by-category
               = t('by_category')

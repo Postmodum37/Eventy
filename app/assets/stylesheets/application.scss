@@ -78,9 +78,9 @@ li.sidebar-brand {
 }
 
 .side-count {
-  font-weight: bold;
+  // font-weight: bold;
   font-size: 16px;
-  color: #fff;
+  color: #ddd;
   margin-right: 10px
 }
 
@@ -96,4 +96,41 @@ li.sidebar-brand {
 .padding-top-bottom {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.profile {
+  margin-top: 15px;
+  // min-height: 250px;
+}
+
+#profile-message {
+  color: #eee;
+}
+
+.btn.btn-link.btn-xs.profile-action-btn {
+  color: #ddd;
+  font-size: 12px;
+}
+
+
+#profile-actions {
+  // max-width: 225px;
+}
+
+hr.profile-spacer {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-color: #bbb;
+}
+
+.sidebar-nav li.profile {
+  text-indent: 0px;
+}
+
+.profile-message-text {
+  font-size: 20px;
+}
+
+.sidebar-icon-text {
+  font-size: 20px;
 }

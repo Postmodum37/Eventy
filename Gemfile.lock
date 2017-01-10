@@ -55,6 +55,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
+    choice (0.2.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -136,6 +137,7 @@ GEM
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.5.2)
     rails (5.0.1)
       actioncable (= 5.0.1)
       actionmailer (= 5.0.1)
@@ -152,6 +154,11 @@ GEM
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6)
+    rails-erd (1.5.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (5.0.1)
@@ -164,6 +171,7 @@ GEM
     rdoc (4.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    ruby-graphviz (1.2.2)
     ruby_parser (3.8.3)
       sexp_processor (~> 4.1)
     sass (3.4.23)
@@ -229,8 +237,10 @@ DEPENDENCIES
   paperclip
   pg
   pry
+  railroady
   rails (= 5.0.1)
   rails-assets-tether (>= 1.1.0)!
+  rails-erd
   sass-rails
   sdoc
   simple_form

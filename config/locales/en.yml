@@ -32,7 +32,7 @@ en:
   street_number: Street number
   street: Street
   title: Title
-  todays_events: Todays Events
+  todays_events: Today's Events
   update_event: Update
   min_participants: Min. Participants
   max_participants: Max. Participants
@@ -79,6 +79,8 @@ en:
   no_denied_requests: No denied requests.
   submit: Submit
   leave_review_message: You are eligible to rate the event and leave a comment!
+  guest: Guest
+  search: Search
 
   categories:
     singular:

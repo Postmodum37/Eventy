@@ -1,9 +1,14 @@
 class User < ApplicationRecord
+  validates :first_name, :last_name, :email, :password, presence: true
+  validates :first_name, :last_name, length: { maximum: 100 }
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+
   has_attached_file :avatar, styles: { medium: '300x300#', thumb: '100x100#', medium_small: '200x200#', comment_avatar: '60x60#' }, default_url: '/images/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   has_many :events
   has_many :reviews
   has_many :comments
+  has_many :event_registrations
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

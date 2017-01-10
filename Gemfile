@@ -60,6 +60,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'byebug'
   gem 'pry'
+  gem 'railroady'
+  gem 'rails-erd'
 end
 
 group :development do
