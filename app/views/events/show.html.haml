@@ -152,8 +152,8 @@
                           %h4.list-group-item-heading= event_registration.user.full_name
                           %p.list-group-item-text= t('requested_approval')
                           .btn-group.btn-group-justified.btn-group-raised.list-group-item-text
-                            = link_to t('deny'), event_event_registration_path(@event, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
-                            = link_to t('approve'), event_event_registration_path(@event, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
+                            = link_to t('deny'), event_event_registration_path(event_registration, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
+                            = link_to t('approve'), event_event_registration_path(@event, event_registration, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
                       .list-group-separator
                     - if @event.event_registrations.pending.count.zero?
                       %p.text-center= t('no_pending_requests')
