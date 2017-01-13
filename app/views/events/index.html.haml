@@ -1,12 +1,20 @@
 .row
-  .col-md-12
-    %h3= event_index_header(params[:type], params[:group])
-    %hr
-    .row
-      - if @events.count.zero?
-        .col-sm-12
-          = render partial: '/shared/no_events'
-      - else
-        - @events.each do |event|
-          .col-md-3.col-sm-12
-            = render partial: '/events/event_card', locals: { event: event }
+  .col-sm-12.col-md-6.col-md-offset-3
+    .well.bs-component
+      = form_for(events_path, method: :get, html: { role: "form", class: 'form-inline' }) do
+        .form-group.label-static
+          = label_tag :category, t('category'), class: 'control-label'
+          = select_tag(:category, options_for_select(Event::CATEGORIES.sort_by { |e| t("categories.singular.#{e}") }.map { |e| [t("categories.singular.#{e}"), e]  }, selected: "#{params[:category] rescue nil}"), include_blank: true, class: "form-control")
+        .form-group.label-static
+          = label_tag :place, t('place'), class: 'control-label'
+          = select_tag(:place, options_for_select(Event::PLACES.sort_by { |e| t("places.singular.#{e}") }.map { |e| [t("places.singular.#{e}"), e]  }, selected: "#{params[:place] rescue nil}"), { include_blank: true, class: "form-control" })
+        = submit_tag t('search'), class: "btn btn-primary btn-raised"
+%hr
+.row
+  - if @events.count.zero?
+    .col-sm-12
+      = render partial: '/shared/no_events'
+  - else
+    - @events.each do |event|
+      .col-md-6.col-sm-12.col-lg-3.col-xs-12.padding-top-bottom
+        = render partial: '/events/event_card', locals: { event: event }

@@ -33,15 +33,23 @@
                 .profile-message-text= t('guest')
             #profile-actions
               .btn-group-horizontal.text-center
-                .btn.btn-link.btn-xs.profile-action-btn Profile
-                .btn.btn-link.btn-xs.profile-action-btn Logout
+                - if user_signed_in?
+                  .btn.btn-link.btn-xs.profile-action-btn
+                    %a{:href => edit_user_registration_path }= t('profile')
+                  .btn.btn-link.btn-xs.profile-action-btn
+                    %a{:href => destroy_user_session_path, data: { method: :delete}, rel: 'nofollow'}= t('logout')
+                - else
+                  .btn.btn-link.btn-xs.profile-action-btn
+                    %a{:href => new_user_session_path }= t('login')
+                  .btn.btn-link.btn-xs.profile-action-btn
+                    %a{:href => new_user_registration_path }= t('register')
           %hr.profile-spacer
             %li
-              %a{:href => 'javasript:void(0)'}
+              %a{:href => new_event_path }
                 %i.material-icons.sidebar-icon event
                 %span.sidebar-icon-text= t('new_event')
             %li
-              %a{:href => 'javasript:void(0)'}
+              %a{:href => events_path }
                 %i.material-icons.sidebar-icon youtube_searched_for
                 %span.sidebar-icon-text= t('search')
           %hr.profile-spacer
@@ -50,7 +58,7 @@
               = t('by_category')
           - Event.all.group(:category).count.each do |type, count|
             %li
-              %a{:href => events_path(type: type, group: 'category')}
+              %a{:href => events_path(category: type)}
                 %span= t("categories.plural.#{type}")
                 %span.pull-right.side-count= count
           %li.sidebar-brand
@@ -58,7 +66,7 @@
               = t('by_place')
           - Event.all.group(:place).count.each do |type, count|
             %li
-              %a{:href => events_path(type: type, group: 'place')}
+              %a{:href => events_path(place: type)}
                 %span= t("places.plural.#{type}")
                 %span.pull-right.side-count= count
       #page-content-wrapper

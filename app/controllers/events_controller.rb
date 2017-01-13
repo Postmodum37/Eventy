@@ -36,13 +36,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    if params[:group].present? && params[:type].present? && params[:group].eql?('category')
-      @events = Event.by_category(params[:type])
-    elsif params[:group].present? && params[:type].present? && params[:group].eql?('place')
-      @events = Event.by_place(params[:type])
-    else
-      @events = Event.all.where('end_date > ?', Time.zone.now - 2.hours)
-    end
+    # @events = Event.all.where('end_date > ?', Time.zone.now - 2.hours)
+    @events = Event.search(params)
   end
 
   private

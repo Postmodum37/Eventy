@@ -9,9 +9,9 @@ class Event < ApplicationRecord
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 
   belongs_to :user
-  has_many :comments, as: :commentable
-  has_many :event_registrations
-  has_many :reviews
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :event_registrations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   scope :by_category, ->(category) { where(category: category) }
   scope :by_place, ->(place) { where(place: place) }
@@ -48,5 +48,12 @@ class Event < ApplicationRecord
   def open_spot_left?
     return true if capacity >= event_registrations.approved.count + 1
     false
+  end
+
+  def self.search(params)
+    search = all
+    search = search.where(category: params[:category]) if params[:category].present?
+    search = search.where(place: params[:place]) if params[:place].present?
+    search
   end
 end
