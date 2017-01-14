@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # resources :events, param: :title, except: [:index]
   resources :events do
-    resources :comments, only: [:new, :create]
-    resources :reviews, only: [:create]
+    patch :block_event_owner
+    resources :comments, only: [:new, :create, :destroy]
+    resources :reviews, only: [:create, :destroy]
     resources :event_registrations, only: [:create, :update]
   end
   # Example of regular route:

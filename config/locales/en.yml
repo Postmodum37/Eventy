@@ -81,6 +81,10 @@ en:
   leave_review_message: You are eligible to rate the event and leave a comment!
   guest: Guest
   search: Search
+  delete_event: Delete Event
+  block_user: Block User
+  unblock_user: Unblock User
+  owner_is_blocked: Event owner is blocked.
 
   categories:
     singular:
@@ -210,3 +214,16 @@ en:
     event:
       created: Event successfully created.
       creation_error: Something went wrong. Try again.
+      authorize_creator_error: 'Action failed: Not an owner of the event.'
+      deleted: Event successfully deleted.
+      owner_blocked: Event owner is now blocked.
+      owner_unblocked: Event owner is now unblocked.
+    comment:
+      created: Your comment was successfully posted!
+      creation_error: Your comment wasn't posted!
+      deleted: Comment successfully deleted.
+    review:
+      created: Review successfully created.
+      creation_error: Something went wrong. Try again.
+      deleted: Comment successfully deleted.
+    authorize_admin_error: 'Action failed: Not an admin.'

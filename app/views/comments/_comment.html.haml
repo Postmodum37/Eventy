@@ -8,14 +8,17 @@
           %b= comment.user.full_name
         = t('made_comment')
       %h6.text-muted.time= time_ago_in_words(comment.created_at)
+    - if current_user.admin?
+      .pull-right
+        - if comment.class.name.eql?('Review')
+          = link_to event_review_path(@event, comment), data: { confirm: "Are you sure?" }, method: :delete do
+            %i.glyphicon.glyphicon-remove.delete-button-icon{"aria-hidden" => "true"}
+
+        - elsif comment.class.name.eql?('Comment')
+          = link_to event_comment_path(@event, comment), data: { confirm: "Are you sure?" }, method: :delete do
+            %i.glyphicon.glyphicon-remove.delete-button-icon{"aria-hidden" => "true"}
+
   .post-description
     %p= comment.body
     - if comment.class.name.eql?('Review')
       %span.review-rating{ data: { score: comment.rating }}
-    -# .stats
-    -#   %a.btn.btn-default.stat-item{:href => "#"}
-    -#     %i.fa.fa-thumbs-up.icon>
-    -#     2
-    -#   %a.btn.btn-default.stat-item{:href => "#"}
-    -#     %i.fa.fa-thumbs-down.icon>
-    -#     12

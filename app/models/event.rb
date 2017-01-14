@@ -50,6 +50,11 @@ class Event < ApplicationRecord
     false
   end
 
+  def over?
+    return true if Time.zone.now >= end_date
+    false
+  end
+
   def self.search(params)
     search = all
     search = search.where(category: params[:category]) if params[:category].present?

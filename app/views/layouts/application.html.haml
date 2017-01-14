@@ -25,7 +25,10 @@
         %ul.sidebar-nav
           %li.profile
             #profile-image
-              = image_tag '/images/missing.png', size: '100x100', class: 'img-responsive img-circle center-block', alt: 'Profile avatar'
+              - if user_signed_in? && current_user.avatar.present?
+                = image_tag current_user.avatar.url(:thumb), class: 'img-responsive img-circle center-block', alt: 'Profile avatar'
+              - else
+                = image_tag '/images/missing.png', size: '100x100', class: 'img-responsive img-circle center-block', alt: 'Profile avatar'
             #profile-message.text-center
               - if user_signed_in?
                 .profile-message-text= current_user.try(:full_name)

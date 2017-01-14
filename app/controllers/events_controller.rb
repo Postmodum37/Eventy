@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin, only: [:destroy, :block_event_owner]
+  before_action :authorize_creator, only: [:edit, :update]
 
   def new
     @event = Event.new
@@ -32,15 +34,33 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to :back, flash: { success: t('flash.dsuccess') }
+    redirect_to root_path, flash: { success: t('flash.event.deleted') }
   end
 
   def index
-    # @events = Event.all.where('end_date > ?', Time.zone.now - 2.hours)
     @events = Event.search(params)
   end
 
+  def block_event_owner
+    @event = Event.find(params[:event_id])
+    if blocking_params.eql?('true')
+      @event.user.update_column(:blocked, true)
+      redirect_back fallback_location: root_path, flash: { success: t('flash.event.owner_blocked') }
+    elsif blocking_params.eql?('false')
+      @event.user.update_column(:blocked, false)
+      redirect_back fallback_location: root_path, flash: { success: t('flash.event.owner_unblocked') }
+    end
+  end
+
   private
+
+  def authorize_admin
+    redirect_back fallback_location: root_path, flash: { danger: t('flash.authorize_admin_error') } unless current_user.admin?
+  end
+
+  def authorize_creator
+    redirect_back fallback_location: root_path, flash: { danger: t('flash.authorize_creator_error') } unless @event.user.eql?(current_user) || current_user.admin?
+  end
 
   def set_event
     @event = Event.find(params[:id])
@@ -48,5 +68,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit!
+  end
+
+  def blocking_params
+    params.require(:block)
   end
 end

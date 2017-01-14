@@ -2,15 +2,13 @@
   .row
     .card.card-block.register-card
       .col-xs-12.col-md-12
-        .row
-          .col-md-3
-            %h2.event-action-title.edit-event= t('edit_event')
-          .col-md-offset-6.col-md-3
-            %a.btn.btn-raised.btn-default.btn-sm.event-side-btn.pull-right{:href => event_path(@event)}
-              = t('event_show')
-              .ripple-container
-        %hr.smaller-hr
-
+        .page-header
+          .btn-toolbar.pull-right
+            .btn-group.btn-group-raised
+              %a.btn.btn-raised.btn-default.btn-sm.event-side-btn.pull-right{:href => event_path(@event)}
+                = t('event_show')
+                .ripple-container
+          %h2.event-action-title.edit-event= t('edit_event')
       .col-xs-12.col-md-6
         .row
           .col-md-12#map.map-height
