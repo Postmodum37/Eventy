@@ -38,11 +38,11 @@
   .col-md-6
     .form-group.label-static
       = f.label :start_date, class: 'control-label'
-      = f.datetime_local_field :start_date, class: "form-control", required: true
+      = f.text_field :start_date, class: "form-control datetimepicker", required: true, value: event_start_date(event)
   .col-md-6
     .form-group.label-static
       = f.label :end_date, class: 'control-label'
-      = f.datetime_local_field :end_date, class: "form-control", required: true
+      = f.text_field :end_date, class: "form-control datetimepicker", required: true, value: event_end_date(event)
 .row
   .col-md-6
     .form-group.label-static

@@ -33,6 +33,8 @@ gem 'sdoc', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails'
 
 gem 'simple_form'
 # gem 'bootstrap', '~> 4.0.0.alpha5'

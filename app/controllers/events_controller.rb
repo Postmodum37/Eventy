@@ -26,9 +26,9 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to :back, flash: { success: t('flash.success') }
+      redirect_to :back, flash: { success: t('flash.event.updated') }
     else
-      redirect_to :back, flash: { warning: t('flash.unsuccessful') }
+      redirect_to :back, flash: { warning: t('flash.event.update_error') }
     end
   end
 

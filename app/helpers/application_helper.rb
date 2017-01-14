@@ -55,4 +55,14 @@ module ApplicationHelper
       t('all_events')
     end
   end
+
+  def event_start_date(event)
+    return event.start_date.strftime('%Y/%m/%d %H:%M') if event.start_date.present?
+    Time.zone.now.strftime('%Y/%m/%d %H:%M')
+  end
+
+  def event_end_date(event)
+    return event.end_date.strftime('%Y/%m/%d %H:%M') if event.end_date.present?
+    (Time.zone.now + 2.hours).strftime('%Y/%m/%d %H:%M')
+  end
 end

@@ -16,11 +16,13 @@
 //= require bootstrap-sprockets
 //= require material
 //= require ripples
+//= require moment
 //= require underscore
 //= require jquery.geocomplete
 //= require gmaps/google
 //= require bootstrap-notify
 //= require jquery.raty
+//= require bootstrap-datetimepicker
 
 
 function displayNotification(type, message) {
@@ -127,4 +129,8 @@ $('a.event-registration-btn.registration-available').on('ajax:success', function
 
 $('a.event-registration-btn').on('ajax:error', function(e, data, status, xhr) {
   displayNotification('warning', 'Something went wrong while registering to an event.');
+});
+
+$('.datetimepicker').datetimepicker({
+  format: 'YYYY/MM/DD HH:mm'
 });
