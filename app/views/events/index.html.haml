@@ -1,6 +1,6 @@
 .row
   .col-sm-12.col-md-6.col-md-offset-3
-    .well.bs-component
+    .well.search-well
       = form_for(events_path, method: :get, html: { role: "form", class: 'form-inline' }) do
         .form-group.label-static
           = label_tag :category, t('category'), class: 'control-label'
@@ -8,6 +8,12 @@
         .form-group.label-static
           = label_tag :place, t('place'), class: 'control-label'
           = select_tag(:place, options_for_select(Event::PLACES.sort_by { |e| t("places.singular.#{e}") }.map { |e| [t("places.singular.#{e}"), e]  }, selected: "#{params[:place] rescue nil}"), { include_blank: true, class: "form-control" })
+        .form-group.label-static
+          = label_tag :title, t('title'), class: 'control-label'
+          = text_field_tag :title, "#{params[:title] rescue nil}", class: "form-control"
+        .form-group.label-static
+          = label_tag :title, t('address'), class: 'control-label'
+          = text_field_tag :address, "#{params[:address] rescue nil}", class: "form-control"
         = submit_tag t('search'), class: "btn btn-primary btn-raised"
 %hr
 .row

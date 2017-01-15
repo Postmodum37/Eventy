@@ -11,6 +11,10 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def resource_class
+    User
+  end
+
   def bootstrap_class_for(flash_type)
     {
         success: 'alert-success',

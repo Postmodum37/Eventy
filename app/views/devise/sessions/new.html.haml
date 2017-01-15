@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-4.col-md-offset-4
-      .card
+      .card.login-card
         .card-height-indicator
         .card-content
           = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form", class: '' }) do |f|

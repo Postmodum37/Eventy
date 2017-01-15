@@ -1,11 +1,20 @@
-%h2 Change your password
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  = f.input :reset_password_token, as: :hidden
-  = f.full_error :reset_password_token
-  .form-inputs
-    = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    = f.input :password_confirmation, label: "Confirm your new password", required: true
-  .form-actions
-    = f.button :submit, "Change my password"
-= render "devise/shared/links"
+.row
+  = devise_bootstrap_error_messages!
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      .card.password-new-card
+        .card-height-indicator
+        .card-content
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+            .card-body
+              %h3.text-center= t('forgot_password')
+              = f.hidden_field :reset_password_token
+              .form-group.label-floating
+                = f.label t('new_password'), class: 'control-label'
+                = f.password_field :password, class: "form-control", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+              .form-group.label-floating
+                = f.label t('confirm_new_password'), class: 'control-label'
+                = f.password_field :password_confirmation, class: "form-control", required: true
+            %footer.card-footer.text-center
+              = f.submit t('change_my_password'), class: "btn btn-primary btn-raised"

@@ -59,6 +59,9 @@ class Event < ApplicationRecord
     search = all
     search = search.where(category: params[:category]) if params[:category].present?
     search = search.where(place: params[:place]) if params[:place].present?
+
+    search = search.where('title LIKE ?', "%#{params[:title]}%") if params[:title].present?
+    search = search.where('address LIKE ?', "%#{params[:address]}%") if params[:address].present?
     search
   end
 end

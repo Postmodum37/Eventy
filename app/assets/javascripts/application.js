@@ -101,11 +101,6 @@ $('#menu-toggle').click(function(event) {
   $('#wrapper').toggleClass('toggled');
 });
 
-$('ul.nav.navbar-nav.navbar-right li').hover(function() {
-  $(this).addClass('active');
-}, function() {
-  $(this).removeClass('active');
-});
 
 $('a.event-registration-btn.already-registered').on('click', function(event) {
   displayNotification('info', 'Already registered to this event.');

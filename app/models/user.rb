@@ -13,7 +13,7 @@ class User < ApplicationRecord
   # :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable
+         :lockable, :confirmable
 
   def full_name
     "#{first_name} #{last_name}"
