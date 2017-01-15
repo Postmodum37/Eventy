@@ -119,6 +119,7 @@ $('a.event-registration-btn.registration-available').on('ajax:success', function
   });
   $(this).removeAttr('data-remote').removeAttr('href').removeAttr('rel').removeAttr('data-method');
   $(this).removeClass('registration-available').addClass('already-registered');
+  $(this).text('Pending')
   displayNotification('success', 'Successfully registered to an event.');
 });
 

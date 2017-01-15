@@ -24,6 +24,16 @@ class User < ApplicationRecord
     false
   end
 
+  def approved_to_event?(event)
+    return true if EventRegistration.where(user_id: id, event_id: event.id).approved.count > 0
+    false
+  end
+
+  def denied_to_event?(event)
+    return true if EventRegistration.where(user_id: id, event_id: event.id).denied.count > 0
+    false
+  end
+
   def eligible_to_vote?(event)
     return true if registered_to_event?(event) && EventRegistration.where(user_id: id, event_id: event.id).last.confirmed? && event.over?
     false
