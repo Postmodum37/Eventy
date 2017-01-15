@@ -141,58 +141,61 @@
                 %li.active
                   %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#pending"}
                     = t('pending')
-                    %span.badge= @event.event_registrations.pending.count
+                    %span.badge.pending-count= @event.event_registrations.pending.count
                     .ripple-container
                 %li
                   %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#approved"}
                     = t('approved')
-                    %span.badge= @event.event_registrations.approved.count
+                    %span.badge.approved-count= @event.event_registrations.approved.count
                     .ripple-container
                 %li
                   %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#denied"}
                     = t('denied')
-                    %span.badge= @event.event_registrations.denied.count
+                    %span.badge.denied-count= @event.event_registrations.denied.count
                     .ripple-container
               #myTabContent.tab-content
                 #pending.tab-pane.fade.active.in
                   .list-group
                     - @event.event_registrations.pending.order(created_at: :asc).each do |event_registration|
-                      .list-group-item
-                        .row-action-primary
-                          %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
-                        .row-content
-                          .least-content= time_ago_in_words(event_registration.created_at)
-                          %h4.list-group-item-heading= event_registration.user.full_name
-                          %p.list-group-item-text= t('requested_approval')
-                          .btn-group.btn-group-justified.btn-group-raised.list-group-item-text
-                            = link_to t('deny'), event_event_registration_path(event_registration, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
-                            = link_to t('approve'), event_event_registration_path(@event, event_registration, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
-                      .list-group-separator
+                      .list-group-item-wrapper
+                        .list-group-item
+                          .row-action-primary
+                            %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
+                          .row-content
+                            .least-content= time_ago_in_words(event_registration.created_at)
+                            %h4.list-group-item-heading= event_registration.user.full_name
+                            %p.list-group-item-text= t('requested_approval')
+                            .btn-group.btn-group-justified.btn-group-raised.list-group-item-text
+                              = link_to t('deny'), event_event_registration_path(@event, event_registration, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
+                              = link_to t('approve'), event_event_registration_path(@event, event_registration, event_registration: { confirmed: true }), remote: true, method: :patch, class: 'btn btn-success btn-xs approve-event-registration'
+                        .list-group-separator
                     - if @event.event_registrations.pending.count.zero?
                       %p.text-center= t('no_pending_requests')
                 #approved.tab-pane.fade
-                  .list-group
+                  .list-group.approved-list
                     - @event.event_registrations.approved.order(updated_at: :asc).each do |event_registration|
-                      .list-group-item
-                        .row-action-primary
-                          %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
-                        .row-content
-                          .least-content= time_ago_in_words(event_registration.updated_at)
-                          %h4.list-group-item-heading= event_registration.user.full_name
-                          %p.list-group-item-text.text-success= t('requested_approved')
-                      .list-group-separator
+                      .list-group-item-wrapper
+                        .list-group-item
+                          .row-action-primary
+                            %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
+                          .row-content
+                            .least-content= time_ago_in_words(event_registration.updated_at)
+                            %h4.list-group-item-heading= event_registration.user.full_name
+                            %p.list-group-item-text.text-success= t('requested_approved')
+                        .list-group-separator
                     - if @event.event_registrations.approved.count.zero?
                       %p.text-center= t('no_approved_requests')
                 #denied.tab-pane.fade
-                  .list-group
+                  .list-group.denied-list
                     - @event.event_registrations.denied.order(updated_at: :asc).each do |event_registration|
-                      .list-group-item
-                        .row-action-primary
-                          %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
-                        .row-content
-                          .least-content= time_ago_in_words(event_registration.updated_at)
-                          %h4.list-group-item-heading= event_registration.user.full_name
-                          %p.list-group-item-text.text-warning= t('requested_denied')
-                      .list-group-separator
+                      .list-group-item-wrapper
+                        .list-group-item
+                          .row-action-primary
+                            %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
+                          .row-content
+                            .least-content= time_ago_in_words(event_registration.updated_at)
+                            %h4.list-group-item-heading= event_registration.user.full_name
+                            %p.list-group-item-text.text-warning= t('requested_denied')
+                        .list-group-separator
                     - if @event.event_registrations.denied.count.zero?
                       %p.text-center= t('no_denied_requests')
