@@ -26,6 +26,8 @@
       %a.btn{:href => event_path(event)}
         = t('more')
         .ripple-container
+        - if user_signed_in? && event.mine?(current_user) && event.event_registrations.pending.count > 0
+          %span.badge= event.event_registrations.pending.count
       - if user_signed_in? && event.mine?(current_user)
         %a.btn.btn-info{:href => edit_event_path(event)}
           = t('edit')
