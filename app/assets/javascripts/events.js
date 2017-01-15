@@ -195,12 +195,12 @@ $('a.approve-event-registration').on('ajax:error', function(e, data, status, xhr
 });
 
 $('#star-rating').raty({
-    path: '/assets',
+    path: '/assets/images',
     scoreName: 'review[rating]'
 });
 
 $('.review-rating').raty({
-    path: '/assets/',
+    path: '/assets/images',
     readOnly: true,
     score: function() {
         return $(this).attr('data-score');
