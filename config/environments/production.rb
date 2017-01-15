@@ -43,7 +43,7 @@ Rails.application.configure do
     domain:               'gmail.com',
     user_name:            Rails.application.secrets.google_mail_username,
     password:             Rails.application.secrets.google_mail_password,
-    authentication:       :login,
+    authentication:       'plain',
     enable_starttls_auto: true
   }
 
