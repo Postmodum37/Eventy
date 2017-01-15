@@ -196,6 +196,7 @@ $('a.approve-event-registration').on('ajax:error', function(e, data, status, xhr
 
 $('#star-rating').raty({
     // path: '/assets/',
+    score: 1,
     scoreName: 'review[rating]'
 });
 
