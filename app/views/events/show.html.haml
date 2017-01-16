@@ -5,16 +5,17 @@
         .page-header
           .btn-toolbar.pull-right
             .btn-group.btn-group-raised
-              - if current_user.admin? || @event.mine?(current_user)
-                %a.btn.btn-raised.btn-default.btn-sm.event-side-btn{:href => edit_event_path(@event)}
-                  = t('event_edit')
-                  .ripple-container
-              - if current_user.admin?
-                = link_to t('delete_event'), event_path(@event), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-raised btn-warning btn-sm event-side-btn'
-              - if current_user.admin? && !@event.mine?(current_user) && !@event.user.blocked?
-                = link_to t('block_user'), event_block_event_owner_path(@event, block: true), data: { confirm: "Are you sure?" }, method: :patch, class: 'btn btn-raised btn-danger btn-sm event-side-btn'
-              - elsif current_user.admin? && !@event.mine?(current_user) && @event.user.blocked?
-                = link_to t('unblock_user'), event_block_event_owner_path(@event, block: false), data: { confirm: "Are you sure?" }, method: :patch, class: 'btn btn-raised btn-success btn-sm event-side-btn'
+              - if user_signed_in?
+                - if current_user.admin? || @event.mine?(current_user)
+                  %a.btn.btn-raised.btn-default.btn-sm.event-side-btn{:href => edit_event_path(@event)}
+                    = t('event_edit')
+                    .ripple-container
+                - if current_user.admin?
+                  = link_to t('delete_event'), event_path(@event), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-raised btn-warning btn-sm event-side-btn'
+                - if current_user.admin? && !@event.mine?(current_user) && !@event.user.blocked?
+                  = link_to t('block_user'), event_block_event_owner_path(@event, block: true), data: { confirm: "Are you sure?" }, method: :patch, class: 'btn btn-raised btn-danger btn-sm event-side-btn'
+                - elsif current_user.admin? && !@event.mine?(current_user) && @event.user.blocked?
+                  = link_to t('unblock_user'), event_block_event_owner_path(@event, block: false), data: { confirm: "Are you sure?" }, method: :patch, class: 'btn btn-raised btn-success btn-sm event-side-btn'
           %h2.event-action-title.edit-event= t('show_event')
       - if user_signed_in? && current_user.eligible_to_vote?(@event) && !current_user.reviews.reviewed_event?(@event)
         .col-xs-12.col-md-8.col-md-offset-2
