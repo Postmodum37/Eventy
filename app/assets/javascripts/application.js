@@ -112,8 +112,14 @@ $('a.event-registration-btn.not-signed-in').on('click', function(event) {
   displayNotification('info', 'Please sign in before registering to an event.');
   event.preventDefault();
 });
+
 $('a.event-registration-btn.event-over').on('click', function(event) {
   displayNotification('info', 'Registration to event is closed.');
+  event.preventDefault();
+});
+
+$('a.btn.btn-info.not-available-for-edit').on('click', function(event) {
+  displayNotification('info', 'Editing is not available. Event is starting in less than a day.');
   event.preventDefault();
 });
 

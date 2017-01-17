@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authorize_admin, only: [:destroy, :block_event_owner]
   before_action :authorize_creator, only: [:edit, :update]
+  before_action :available_for_edit, only: [:edit]
 
   def new
     @event = Event.new
@@ -53,6 +54,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def available_for_edit
+    redirect_back fallback_location: root_path, flash: { info: t('flash.event.cant_edit_event') } unless @event.available_for_edit?
+  end
 
   def authorize_admin
     redirect_back fallback_location: root_path, flash: { danger: t('flash.authorize_admin_error') } unless current_user.admin?

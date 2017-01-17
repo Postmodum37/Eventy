@@ -55,6 +55,11 @@ class Event < ApplicationRecord
     false
   end
 
+  def available_for_edit?
+    return true if (start_date - 1.day) >= Time.zone.now
+    false
+  end
+
   def self.search(params)
     search = all
     search = search.where(category: params[:category]) if params[:category].present?

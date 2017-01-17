@@ -231,6 +231,7 @@ en:
       owner_unblocked: Event owner is now unblocked.
       updated: Event successfully updated.
       update_error: Something went wrong. Try again.
+      cant_edit_event: Editing is not available. Event is starting in less than a day.
     comment:
       created: Your comment was successfully posted!
       creation_error: Your comment wasn't posted!

@@ -30,9 +30,14 @@
           %span.badge= event.event_registrations.pending.count
       - if user_signed_in?
         - if event.mine?(current_user)
-          %a.btn.btn-info{:href => edit_event_path(event)}
-            = t('edit')
-            .ripple-container
+          - if event.available_for_edit?
+            %a.btn.btn-info{:href => edit_event_path(event)}
+              = t('edit')
+              .ripple-container
+          - else
+            %a.btn.btn-info.not-available-for-edit{:href => 'javascript:void(0)', disabled: true}
+              = t('edit')
+              .ripple-container
         - elsif event.over?
           = link_to t('event_over'), 'javascript:void(0)', class: 'btn event-registration-btn event-over', disabled: true
         - elsif current_user.registered_to_event?(event)
