@@ -112,6 +112,10 @@ $('a.event-registration-btn.not-signed-in').on('click', function(event) {
   displayNotification('info', 'Please sign in before registering to an event.');
   event.preventDefault();
 });
+$('a.event-registration-btn.event-over').on('click', function(event) {
+  displayNotification('info', 'Registration to event is closed.');
+  event.preventDefault();
+});
 
 $('a.event-registration-btn.registration-available').on('ajax:success', function(e, data, status, xhr) {
   $(this).attr({

@@ -28,18 +28,21 @@
         .ripple-container
         - if user_signed_in? && event.mine?(current_user) && event.event_registrations.pending.count > 0
           %span.badge= event.event_registrations.pending.count
-      - if user_signed_in? && event.mine?(current_user)
-        %a.btn.btn-info{:href => edit_event_path(event)}
-          = t('edit')
-          .ripple-container
-      - elsif user_signed_in? && !current_user.registered_to_event?(event)
-        = link_to t('register_to_event'), event_event_registrations_path(event, event_registration: { user_id: current_user.id, event_id: event.id }), remote: true, method: :post, class: 'btn btn-warning event-registration-btn registration-available'
-      - elsif user_signed_in? && current_user.registered_to_event?(event)
-        - if current_user.approved_to_event?(event)
-          = link_to t('approved'), 'javascript:void(0)', class: 'btn btn-success event-registration-btn already-registered', disabled: true
-        - elsif current_user.denied_to_event?(event)
-          = link_to t('denied'), 'javascript:void(0)', class: 'btn btn-danger event-registration-btn already-registered', disabled: true
-        - else
-          = link_to t('pending'), 'javascript:void(0)', class: 'btn btn-warning event-registration-btn already-registered', disabled: true
+      - if user_signed_in?
+        - if event.mine?(current_user)
+          %a.btn.btn-info{:href => edit_event_path(event)}
+            = t('edit')
+            .ripple-container
+        - elsif event.over?
+          = link_to t('event_over'), 'javascript:void(0)', class: 'btn event-registration-btn event-over', disabled: true
+        - elsif current_user.registered_to_event?(event)
+          - if current_user.approved_to_event?(event)
+            = link_to t('approved'), 'javascript:void(0)', class: 'btn btn-success event-registration-btn already-registered', disabled: true
+          - elsif current_user.denied_to_event?(event)
+            = link_to t('denied'), 'javascript:void(0)', class: 'btn btn-danger event-registration-btn already-registered', disabled: true
+          - else
+            = link_to t('pending'), 'javascript:void(0)', class: 'btn btn-warning event-registration-btn already-registered', disabled: true
+        - elsif !current_user.registered_to_event?(event)
+          = link_to t('register_to_event'), event_event_registrations_path(event, event_registration: { user_id: current_user.id, event_id: event.id }), remote: true, method: :post, class: 'btn btn-warning event-registration-btn registration-available'
       - else
         = link_to t('register_to_event'), 'javascript:void(0)', class: 'btn btn-warning event-registration-btn not-signed-in', disabled: true

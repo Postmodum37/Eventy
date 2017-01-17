@@ -95,6 +95,7 @@ en:
   new_password: New password
   confirm_new_password: Confirm your new password
   change_my_password: Change my password
+  event_over: Closed
 
   categories:
     singular:
