@@ -175,6 +175,7 @@ $('a.approve-event-registration').on('ajax:success', function(e, data, status, x
   $lastRegistration.find('.least-content').text('less than a minute');
   $lastRegistration.find('.btn-group').remove();
   $lastRegistration.find('.list-group-item-text').addClass('text-success').text('Requested approved to join this event.');
+  $lastRegistration.find('.registration-user-email').toggleClass('hidden');
   pendingTextValue = Number($('.pending-count').text());
   approvedTextValue = Number($('.approved-count').text());
 

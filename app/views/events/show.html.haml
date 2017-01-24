@@ -164,7 +164,9 @@
                             %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
                           .row-content
                             .least-content= time_ago_in_words(event_registration.created_at)
-                            %h4.list-group-item-heading= event_registration.user.full_name
+                            %h4.list-group-item-heading
+                              = event_registration.user.full_name
+                              %span.form-text.text-muted.registration-user-email.hidden{ style: 'font-size:14px;'}= event_registration.user.email
                             %p.list-group-item-text= t('requested_approval')
                             .btn-group.btn-group-justified.btn-group-raised.list-group-item-text
                               = link_to t('deny'), event_event_registration_path(@event, event_registration, event_registration: { confirmed: false }), remote: true, method: :patch, class: 'btn btn-warning btn-xs deny-event-registration'
@@ -181,7 +183,9 @@
                             %img.img-circle.avatar{:alt => "user profile image", :src => event_registration.user.avatar.url(:comment_avatar)}
                           .row-content
                             .least-content= time_ago_in_words(event_registration.updated_at)
-                            %h4.list-group-item-heading= event_registration.user.full_name
+                            %h4.list-group-item-heading
+                              = event_registration.user.full_name
+                              %span.form-text.text-muted.registration-user-email{ style: 'font-size:14px;'}= event_registration.user.email
                             %p.list-group-item-text.text-success= t('requested_approved')
                         .list-group-separator
                     - if @event.event_registrations.approved.count.zero?
