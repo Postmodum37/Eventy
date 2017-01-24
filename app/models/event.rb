@@ -4,6 +4,8 @@ class Event < ApplicationRecord
             :contact_phone, :category, :place, :max_participants, presence: true
   validates :min_participants, :max_participants, numericality: true
   validates :contact_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validate :end_date_after_start_date
+  validate :start_date_after_or_now
 
   has_attached_file :banner, styles: { medium: '585x500#', thumb: '100x100>' }
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
@@ -68,5 +70,15 @@ class Event < ApplicationRecord
     search = search.where('title LIKE ?', "%#{params[:title]}%") if params[:title].present?
     search = search.where('address LIKE ?', "%#{params[:address]}%") if params[:address].present?
     search
+  end
+
+  def end_date_after_start_date
+    return if end_date.blank? || start_date.blank?
+    errors.add(:end_date, 'must be after the start date') if end_date <= start_date
+  end
+
+  def start_date_after_or_now
+    return if end_date.blank? || start_date.blank?
+    errors.add(:start_date, 'must be set in the future') if start_date < Time.zone.now
   end
 end

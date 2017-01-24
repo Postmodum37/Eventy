@@ -13,9 +13,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      redirect_to edit_event_path(@event), flash: { success: t('flash.event.created') }
+      redirect_to event_path(@event), flash: { success: t('flash.event.created') }
     else
-      redirect_to :back, flash: { warning: t('flash.event.creation_error') }
+      redirect_back fallback_location: root_path, flash: { warning: t('flash.event.creation_error') }
     end
   end
 
@@ -27,9 +27,9 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to :back, flash: { success: t('flash.event.updated') }
+      redirect_back fallback_location: root_path, flash: { success: t('flash.event.updated') }
     else
-      redirect_to :back, flash: { warning: t('flash.event.update_error') }
+      redirect_back fallback_location: root_path, flash: { warning: t('flash.event.update_error') }
     end
   end
 
